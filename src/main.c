@@ -132,15 +132,24 @@ void dotprod_ikj_block(
     }
 }
 
-void print_PAPI_result() {
+void print_CSV_header(){
+    printf("name");
+
     char* event_name = malloc(sizeof(char) * PAPI_MAX_STR_LEN);
     for (size_t i = 0; i < NUM_EVENTS; i++) {
         PAPI_event_code_to_name(EVENTS[i], event_name);
-        printf("EVENT %s\t%lld\n", event_name, VALUES[i]);
+        printf(",%s", event_name);
     }
     putchar('\n');
 
     free(event_name);
+}
+
+void print_PAPI_result_CSV() {
+    for (size_t i = 0; i < NUM_EVENTS; i++) {
+        printf(",%lld", VALUES[i]);
+    }
+    putchar('\n');
 }
 
 int main(void) {
@@ -151,7 +160,9 @@ int main(void) {
 
     matrices_rand_ones(SIZE, A, B);
 
-    puts("Dotprod ijk:");
+    print_CSV_header();
+
+    printf("Dotprod ijk");
 
     PAPI_start(EVENTSET);
     dotprod_ijk(SIZE, A, B, C);
@@ -161,10 +172,10 @@ int main(void) {
     dotprod_ijk(SIZE, B, A, C);
     assert_result_collums(SIZE, C);
 
-    print_PAPI_result();
+    print_PAPI_result_CSV();
     PAPI_reset(EVENTSET);
 
-    puts("Dotprod ijk transposed:");
+    printf("Dotprod ijk transposed");
 
     PAPI_start(EVENTSET);
     dotprod_ijk_tranposed(SIZE, A, B, C);
@@ -174,10 +185,10 @@ int main(void) {
     dotprod_ijk_tranposed(SIZE, B, A, C);
     assert_result_collums(SIZE, C);
 
-    print_PAPI_result();
+    print_PAPI_result_CSV();
     PAPI_reset(EVENTSET);
 
-    puts("Dotprod ikj:");
+    printf("Dotprod ikj");
 
     PAPI_start(EVENTSET);
     dotprod_ikj(SIZE, A, B, C);
@@ -187,10 +198,10 @@ int main(void) {
     dotprod_ikj(SIZE, B, A, C);
     assert_result_collums(SIZE, C);
 
-    print_PAPI_result();
+    print_PAPI_result_CSV();
     PAPI_reset(EVENTSET);
 
-    puts("Dotprod jki:");
+    printf("Dotprod jki");
 
     PAPI_start(EVENTSET);
     dotprod_jki(SIZE, A, B, C);
@@ -200,10 +211,10 @@ int main(void) {
     dotprod_jki(SIZE, B, A, C);
     assert_result_collums(SIZE, C);
 
-    print_PAPI_result();
+    print_PAPI_result_CSV();
     PAPI_reset(EVENTSET);
 
-    puts("Dotprod jki transposed:");
+    printf("Dotprod jki transposed");
 
     PAPI_start(EVENTSET);
     dotprod_jki_transposed(SIZE, A, B, C);
@@ -213,10 +224,10 @@ int main(void) {
     dotprod_jki_transposed(SIZE, B, A, C);
     assert_result_collums(SIZE, C);
 
-    print_PAPI_result();
+    print_PAPI_result_CSV();
     PAPI_reset(EVENTSET);
 
-    puts("Dotprod ikj w/ block optimization:");
+    printf("Dotprod ikj w/ block optimization");
 
     PAPI_start(EVENTSET);
     dotprod_ikj_block(SIZE, A, B, C);
@@ -226,7 +237,7 @@ int main(void) {
     dotprod_ikj_block(SIZE, B, A, C);
     assert_result_collums(SIZE, C);
 
-    print_PAPI_result();
+    print_PAPI_result_CSV();
     PAPI_reset(EVENTSET);
 
     return 0;

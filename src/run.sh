@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #PBS -N dotprod_fast_af
-#PBS -l walltime=1:00:0o
+#PBS -l walltime=60:00
 #PBS -l nodes=1:r662:ppn=48
 #PBS -q mei
 
