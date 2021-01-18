@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>dotprod</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="aa---dotprod" class="title-slide slide level1">
+<h1>AA - dotprod</h1>
+<ul>
+<li>Jose Ferreira - a83683</li>
+<li>Joao Teixeira - a85504</li>
+</ul>
+</section>
+
+<section>
+<section id="performance-measuring" class="title-slide slide level1">
+<h1>Performance Measuring</h1>
+
+</section>
+<section id="matrix-size" class="title-slide slide level2">
+<h2>Matrix Size</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">L1 data</th>
+<th style="text-align: center;">L2 data</th>
+<th style="text-align: center;">L3 data</th>
+<th style="text-align: center;">RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">cache size</td>
+<td style="text-align: center;">32768</td>
+<td style="text-align: center;">262144</td>
+<td style="text-align: center;">31457280</td>
+<td style="text-align: center;">&gt;31457280</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">max size</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">147</td>
+<td style="text-align: center;">1619</td>
+<td style="text-align: center;">&gt;1619</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">used size</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">1500</td>
+<td style="text-align: center;">4000</td>
+</tr>
+</tbody>
+</table>
+<p>Formula: N²*3*4 = size</p>
+</section>
+
+<section id="execution-time---cpu" class="title-slide slide level2">
+<h2>execution time - CPU</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: center;">L1 data</th>
+<th style="text-align: center;">L2 data</th>
+<th style="text-align: center;">L3 data</th>
+<th style="text-align: center;">RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ijk</td>
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">1733</td>
+<td style="text-align: center;">4239493</td>
+<td style="text-align: center;">177553349</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ijk trans</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ikj</td>
+<td style="text-align: center;">71</td>
+<td style="text-align: center;">1718</td>
+<td style="text-align: center;">3194044</td>
+<td style="text-align: center;">61695968</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">jki</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">1744</td>
+<td style="text-align: center;">8596300</td>
+<td style="text-align: center;">324751067</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">jki trans</td>
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">1375</td>
+<td style="text-align: center;">2273077</td>
+<td style="text-align: center;">45375529</td>
+</tr>
+</tbody>
+</table>
+<p>time in μs</p>
+</section>
+<section id="ram-accessses" class="slide level3">
+<h3>RAM accessses</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: center;">L1 data</th>
+<th style="text-align: center;">L2 data</th>
+<th style="text-align: center;">L3 data</th>
+<th style="text-align: center;">RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ijk</td>
+<td style="text-align: center;">7/529759</td>
+<td style="text-align: center;">8/13962496</td>
+<td style="text-align: center;">157510/27021113743</td>
+<td style="text-align: center;">3999942878/512150216402</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ijk trans</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ikj</td>
+<td style="text-align: center;">125/460398</td>
+<td style="text-align: center;">885/12203520</td>
+<td style="text-align: center;">61438/23641610705</td>
+<td style="text-align: center;">138308042/448118098445</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">jki</td>
+<td style="text-align: center;">192/525999</td>
+<td style="text-align: center;">1172/13945920</td>
+<td style="text-align: center;">424240/27018866530</td>
+<td style="text-align: center;">4024883519/512134361578</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">jki trans</td>
+<td style="text-align: center;">164/480100</td>
+<td style="text-align: center;">1059/12377782</td>
+<td style="text-align: center;">213621/23668627809</td>
+<td style="text-align: center;">241300131/448310130045</td>
+</tr>
+</tbody>
+</table>
+<p>Formula: L3 misses / Total instructions</p>
+</section>
+
+<section id="execution-time---cpu-1" class="title-slide slide level2">
+<h2>execution time - CPU</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: center;">L1 data</th>
+<th style="text-align: center;">L2 data</th>
+<th style="text-align: center;">L3 data</th>
+<th style="text-align: center;">RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">block</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">64385275</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">block + vec</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">block + vec + OpenMP</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">2407551</td>
+</tr>
+</tbody>
+</table>
+<p>time in μs</p>
+</section>
+
+<section id="execution-time---gpu" class="title-slide slide level2">
+<h2>execution time - GPU</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: center;">L1 data</th>
+<th style="text-align: center;">L2 data</th>
+<th style="text-align: center;">L3 data</th>
+<th style="text-align: center;">RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CUDA</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>time in μs</p>
+</section>
+</section>
+<section id="roofline-graph" class="title-slide slide level1">
+<h1>roofline graph</h1>
+
+</section>
+
+<section>
+<section id="global-miss-rate" class="title-slide slide level1">
+<h1>global% miss rate</h1>
+
+</section>
+<section id="global-miss-rate-l1" class="title-slide slide level2">
+<h2>global% miss rate L1</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: center;">L1 data</th>
+<th style="text-align: center;">L2 data</th>
+<th style="text-align: center;">L3 data</th>
+<th style="text-align: center;">RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ijk</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ijk trans</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">jki</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">jki trans</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Formula: 100*L1 misses / Total accessses</p>
+</section>
+
+<section id="global-miss-rate-l2" class="title-slide slide level2">
+<h2>global% miss rate L2</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: center;">L1 data</th>
+<th style="text-align: center;">L2 data</th>
+<th style="text-align: center;">L3 data</th>
+<th style="text-align: center;">RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ijk</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ijk trans</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">jki</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">jki trans</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Formula: 100*L2 misses / Total accessses</p>
+</section>
+
+<section id="global-miss-rate-l3" class="title-slide slide level2">
+<h2>global% miss rate L3</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: center;">L1 data</th>
+<th style="text-align: center;">L2 data</th>
+<th style="text-align: center;">L3 data</th>
+<th style="text-align: center;">RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ijk</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ijk trans</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">jki</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">jki trans</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Formula: 100*L3 misses / Total accessses</p>
+</section>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
