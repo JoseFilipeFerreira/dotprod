@@ -1,17 +1,3 @@
-/**************************************************************
- *
- * --== Simple CUDA kernel ==--
- * author: ampereira
- *
- *
- * Fill the rest of the code
- *
- * Insert the functions for time measurement in the correct
- * sections (i.e. do not account for filling the vectors with random data)
- *
- *
- * The dot array size must be set to the SIZE #define, i.e., float dot[SIZE];
- **************************************************************/
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
@@ -74,14 +60,34 @@ void checkCUDAError (const char *msg) {
 // Fill the input parameters and kernel qualifier
 __global__
 void dotKernel (float *dev_m1, float *dev_m2, float *dev_output) {
-    int id = blockIdx.x*blockDim.x+threadIdx.x;
-
-    //block = blockId * blockDim - 0 -> max threadId
-    int i = SIZE / id;
-    int k = SIZE % id;
-    for (size_t j = 0; k < NUM_THREADS_PER_BLOCK; k++) {
-        dev_output[blockIdx.x*blockDim.x+j] += dev_m1[id] * dev_m2[k*blockDim.x+j];
+    int ROW = blockIdx.y*blockDim.y+threadIdx.y;
+    int COL = blockIdx.x*blockDim.x+threadIdx.x;
+    __shared__ float shareA[NUM_BLOCKS/16][NUM_BLOCKS/16];
+    __shared__ float shareB[NUM_BLOCKS/16][NUM_BLOCKS/16];
+    int bx = blockIdx.x; int by = blockIdx.y;
+    int tx = threadIdx.x; int ty = threadIdx.y;
+    int row = by * blockDim.y + ty;
+    int col = bx * blockDim.x + tx;
+    float tmp_sum = 0.0f;
+    for(int i = 0; i < blockDim.x; ++i){
+        shareA[ty][tx] = dev_m1[row*blockDim.x + (i*2 + tx)];
+        shareB[ty][tx] = dev_m2[(i*2 + ty)*blockDim.x + col];
+        __syncthreads();
+        for(int k = 0; k < blockDim.x; ++k){
+            tmp_sum += shareA[ty][k] * shareB[k][tx];
+            __syncthreads();
+        }
+        dev_output[ROW * NUM_BLOCKS + COL] = tmp_sum;
     }
+    /*
+    if (ROW < NUM_BLOCKS && COL < NUM_BLOCKS) {
+        float tmp_sum = 0.0f;
+        for (int i = 0; i < NUM_BLOCKS; i++) {
+            tmp_sum += dev_m1[ROW * NUM_BLOCKS + i] * dev_m2[i * NUM_BLOCKS + COL];
+        }
+        dev_output[ROW * NUM_BLOCKS + COL] = tmp_sum;
+    }
+    */
 }
 
 // Fill with the code required for the GPU dot (mem allocation, transfers, kernel launch of dotKernel)
@@ -100,15 +106,20 @@ float* dotGPU (float *m1, float *m2) {
     cudaMemcpy(dev_m2, m2, sizeof(float) * SIZE, cudaMemcpyHostToDevice);
     cudaMemcpy(dev_output, array_output, sizeof(float) * SIZE, cudaMemcpyHostToDevice);
 
+    dim3 blocksPerGrid(16, 16, 1);
+    dim3 threadsPerBlock(NUM_THREADS_PER_BLOCK/16, NUM_THREADS_PER_BLOCK/16, 1);
     // launch the kernel
-    dotKernel <<< NUM_THREADS_PER_BLOCK, NUM_BLOCKS >>> (dev_m1, dev_m2, dev_output);
+    dotKernel <<< blocksPerGrid, threadsPerBlock >>> (dev_m1, dev_m2, dev_output);
 
     // copy the output to the host
     cudaMemcpy(array_output, dev_output, sizeof(float) * SIZE, cudaMemcpyDeviceToHost);
     stopKernelTime();
-    for(size_t i = 0; i < SIZE; i++)
-        cout << array_output[i] << '\n';
+    for(size_t i = 0; i < 128; i++) {
+        for(size_t j = 0; j < 128; j++)
+            cout << array_output[i*128 + j] << ' ';
+        cout << '\n';
 
+    }
     // free the device memory
     cudaFree(dev_m1);
     cudaFree(dev_m2);
@@ -123,7 +134,7 @@ int main (int argc, char** argv) {
     // initialize array with random values
     for (unsigned i = 0; i < SIZE; i++) {
         array1[i] = ((float) rand()) / ((float) RAND_MAX);
-        array2[i] = ((float) rand()) / ((float) RAND_MAX);
+        array2[i] = 1;
     }
     dotGPU(array1, array2);
     return 0;
