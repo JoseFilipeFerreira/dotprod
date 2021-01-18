@@ -28,8 +28,8 @@
 <section id="aa---dotprod" class="title-slide slide level1">
 <h1>AA - dotprod</h1>
 <ul>
-<li>Jose Ferreira - a83683</li>
-<li>Joao Teixeira - a85504</li>
+<li>José Ferreira - a83683</li>
+<li>João Teixeira - a85504</li>
 </ul>
 </section>
 
@@ -57,8 +57,8 @@
 <tr class="odd">
 <td style="text-align: left;">ijk</td>
 <td style="text-align: center;">line</td>
-<td style="text-align: center;">line</td>
 <td style="text-align: center;">column</td>
+<td style="text-align: center;">line</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ijk trans</td>
@@ -90,7 +90,11 @@
 
 <section id="block-optimization" class="title-slide slide level2">
 <h2>Block Optimization</h2>
-
+<ul>
+<li>nested for loops ijk</li>
+<li>transpose B</li>
+</ul>
+<p><img src="matrix_mult_block.png" height="300px"/></p>
 </section>
 
 <section id="cuda" class="title-slide slide level2">
@@ -101,7 +105,10 @@
 <section>
 <section id="performance-measurement" class="title-slide slide level1">
 <h1>Performance Measurement</h1>
-
+<ul>
+<li>PAPI</li>
+<li>sys/time.h</li>
+</ul>
 </section>
 <section id="data-size" class="title-slide slide level2">
 <h2>Data Size</h2>
@@ -164,10 +171,10 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">ijk trans</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">1698</td>
+<td style="text-align: center;">3223331</td>
+<td style="text-align: center;">71675215</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ikj</td>
@@ -195,7 +202,7 @@
 <p>time in μs</p>
 </section>
 <section id="ram-accesses" class="slide level3">
-<h3>RAM accesses</h3>
+<h3>RAM accesses (%)</h3>
 <table>
 <thead>
 <tr class="header">
@@ -216,10 +223,10 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">ijk trans</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.001911</td>
+<td style="text-align: center;">.000105</td>
+<td style="text-align: center;">.000308</td>
+<td style="text-align: center;">.084568</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ikj</td>
@@ -269,8 +276,8 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">block + vec</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">71</td>
+<td style="text-align: center;">1523</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 </tr>
@@ -311,11 +318,6 @@
 <p>time in μs</p>
 </section>
 </section>
-<section id="roofline-graph" class="title-slide slide level1">
-<h1>roofline graph</h1>
-
-</section>
-
 <section>
 <section id="global-miss-rate" class="title-slide slide level1">
 <h1>global% miss rate</h1>
@@ -336,35 +338,35 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">ijk</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.2360</td>
+<td style="text-align: center;">2.1902</td>
+<td style="text-align: center;">35.5386</td>
+<td style="text-align: center;">34.4700</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ijk trans</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.1865</td>
+<td style="text-align: center;">2.0801</td>
+<td style="text-align: center;">2.0981</td>
+<td style="text-align: center;">2.1194</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">jki</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.1411</td>
+<td style="text-align: center;">1.9620</td>
+<td style="text-align: center;">50.0075</td>
+<td style="text-align: center;">50.1961</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">jki trans</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.6037</td>
+<td style="text-align: center;">7.9182</td>
+<td style="text-align: center;">8.4272</td>
+<td style="text-align: center;">8.5532</td>
 </tr>
 </tbody>
 </table>
-<p>Formula: 100*L1 misses / Total accesses</p>
+<p>Formula: 100*L1 misses / (Load Ins + Store Ins)</p>
 </section>
 
 <section id="global-miss-rate-l2" class="title-slide slide level2">
@@ -382,35 +384,35 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">ijk</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.0762</td>
+<td style="text-align: center;">.0237</td>
+<td style="text-align: center;">2.3420</td>
+<td style="text-align: center;">34.4019</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ijk trans</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.0902</td>
+<td style="text-align: center;">.0294</td>
+<td style="text-align: center;">.0532</td>
+<td style="text-align: center;">.7009</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">jki</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.0873</td>
+<td style="text-align: center;">.0273</td>
+<td style="text-align: center;">9.6299</td>
+<td style="text-align: center;">50.1126</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">jki trans</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.3874</td>
+<td style="text-align: center;">.1204</td>
+<td style="text-align: center;">.2507</td>
+<td style="text-align: center;">6.4841</td>
 </tr>
 </tbody>
 </table>
-<p>Formula: 100*L2 misses / Total accesses</p>
+<p>Formula: 100*L2 misses / (Load Ins + Store Ins)</p>
 </section>
 
 <section id="global-miss-rate-l3" class="title-slide slide level2">
@@ -428,36 +430,40 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">ijk</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.0025</td>
+<td style="text-align: center;">.0001</td>
+<td style="text-align: center;">.0016</td>
+<td style="text-align: center;">2.0842</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ijk trans</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.0664</td>
+<td style="text-align: center;">.0196</td>
+<td style="text-align: center;">.0015</td>
+<td style="text-align: center;">.2712</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">jki</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.0709</td>
+<td style="text-align: center;">.0173</td>
+<td style="text-align: center;">.0031</td>
+<td style="text-align: center;">1.5741</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">jki trans</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">.3270</td>
+<td style="text-align: center;">.0831</td>
+<td style="text-align: center;">.0087</td>
+<td style="text-align: center;">2.9880</td>
 </tr>
 </tbody>
 </table>
-<p>Formula: 100*L3 misses / Total accesses</p>
+<p>Formula: 100*L3 misses / (Load Ins + Store Ins)</p>
 </section>
+</section>
+<section id="roofline-graph" class="title-slide slide level1">
+<h1>roofline graph</h1>
+
 </section>
     </div>
   </div>
