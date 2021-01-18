@@ -1,0 +1,2293 @@
+
+Analyzing loop at main.c:32
+main.c:32:5: note: ===== analyze_loop_nest =====
+main.c:32:5: note: === vect_analyze_loop_form ===
+main.c:32:5: note: not vectorized: multiple nested loops.
+main.c:32:5: note: bad loop form.
+
+Analyzing loop at main.c:33
+main.c:33:9: note: ===== analyze_loop_nest =====
+main.c:33:9: note: === vect_analyze_loop_form ===
+main.c:33:9: note: === vect_analyze_loop_form ===
+main.c:33:9: note: === get_loop_niters ===
+main.c:33:9: note: Considering outer-loop vectorization.
+main.c:33:9: note: === get_loop_niters ===
+main.c:33:9: note: Symbolic number of iterations is size_1(D)
+main.c:33:9: note: === vect_analyze_data_refs ===
+main.c:33:9: note: got vectype for stmt: pretmp_67 = *_18[j_46];
+vector(4) float
+main.c:33:9: note: analyze in outer-loop: *(a_26(D) + _11)
+main.c:33:9: note: 	outer base_address: a_26(D) + (sizetype) _11
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 0
+	outer aligned to: 128
+main.c:33:9: note: got vectype for stmt: _13 = *_12[k_45];
+vector(4) float
+main.c:33:9: note: analyze in outer-loop: *b_27(D)
+main.c:33:9: note: 	outer base_address: b_27(D)
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 4
+	outer aligned to: 128
+main.c:33:9: note: got vectype for stmt: _17 = *_16[j_46];
+vector(4) float
+main.c:33:9: note: not vectorized: not suitable for strided load _17 = *_16[j_46];
+main.c:33:9: note: bad data references.
+
+Analyzing loop at main.c:34
+main.c:34:13: note: ===== analyze_loop_nest =====
+main.c:34:13: note: === vect_analyze_loop_form ===
+main.c:34:13: note: === get_loop_niters ===
+main.c:34:13: note: Symbolic number of iterations is size_1(D)
+main.c:34:13: note: === vect_analyze_data_refs ===
+main.c:34:13: note: got vectype for stmt: _13 = *_12[k_45];
+vector(4) float
+main.c:34:13: note: got vectype for stmt: _17 = *_16[j_46];
+vector(4) float
+main.c:34:13: note: got vectype for stmt: *_18[j_46] = _20;
+vector(4) float
+main.c:34:13: note: === vect_analyze_scalar_cycles ===
+main.c:34:13: note: Analyze phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:34:13: note: Analyze phi: k_45 = PHI <k_30(4), 0(8)>
+main.c:34:13: note: Access function of PHI: {0, +, 1}_3
+main.c:34:13: note: step: 1,  init: 0
+main.c:34:13: note: Detected induction.
+main.c:34:13: note: Analyze phi: prephitmp_68 = PHI <_20(4), pretmp_67(8)>
+main.c:34:13: note: Access function of PHI: {pretmp_67, +, _28}_3
+main.c:34:13: note: step: _28,  init: pretmp_67
+main.c:34:13: note: step unknown.
+main.c:34:13: note: Analyze phi: prephitmp_68 = PHI <_20(4), pretmp_67(8)>
+main.c:34:13: note: reduction used in loop.
+main.c:34:13: note: Unknown def-use cycle pattern.
+main.c:34:13: note: === vect_pattern_recog ===
+main.c:34:13: note: vect_is_simple_use: operand _7
+main.c:34:13: note: def_stmt: _7 = size_1(D) * 4;
+main.c:34:13: note: type of def: external
+main.c:34:13: note: vect_is_simple_use: operand _13
+main.c:34:13: note: def_stmt: _13 = *_12[k_45];
+main.c:34:13: note: type of def: internal
+main.c:34:13: note: === vect_analyze_data_ref_accesses ===
+main.c:34:13: note: not vectorized: complicated access pattern.
+main.c:34:13: note: bad data access.
+main.c:28:6: note: vectorized 0 loops in function.
+main.c:28:6: note: ===vect_slp_analyze_bb===
+main.c:30:5: note: === vect_analyze_data_refs ===
+main.c:30:5: note: not vectorized: not enough data-refs in basic block.
+main.c:32:5: note: === vect_analyze_data_refs ===
+main.c:32:5: note: not vectorized: not enough data-refs in basic block.
+main.c:32:5: note: ===vect_slp_analyze_bb===
+main.c:32:5: note: === vect_analyze_data_refs ===
+main.c:32:5: note: not vectorized: not enough data-refs in basic block.
+main.c:32:5: note: ===vect_slp_analyze_bb===
+main.c:32:5: note: ===vect_slp_analyze_bb===
+main.c:34:13: note: === vect_analyze_data_refs ===
+main.c:34:13: note: got vectype for stmt: _13 = *_12[k_45];
+vector(4) float
+main.c:34:13: note: got vectype for stmt: _17 = *_16[j_46];
+vector(4) float
+main.c:34:13: note: got vectype for stmt: *_18[j_46] = _20;
+vector(4) float
+main.c:34:13: note: === vect_analyze_data_ref_accesses ===
+main.c:34:13: note: not consecutive access *_18[j_46] = _20;
+main.c:34:13: note: not consecutive access _17 = *_16[j_46];
+main.c:34:13: note: not vectorized: no grouped stores in basic block.
+main.c:34:13: note: ===vect_slp_analyze_bb===
+main.c:33:9: note: === vect_analyze_data_refs ===
+main.c:33:9: note: not vectorized: not enough data-refs in basic block.
+main.c:33:9: note: ===vect_slp_analyze_bb===
+main.c:33:9: note: ===vect_slp_analyze_bb===
+main.c:33:9: note: === vect_analyze_data_refs ===
+main.c:33:9: note: got vectype for stmt: pretmp_67 = *_18[j_46];
+vector(4) float
+main.c:33:9: note: not vectorized: not enough data-refs in basic block.
+main.c:33:9: note: ===vect_slp_analyze_bb===
+main.c:32:5: note: === vect_analyze_data_refs ===
+main.c:32:5: note: not vectorized: not enough data-refs in basic block.
+main.c:32:5: note: ===vect_slp_analyze_bb===
+main.c:32:5: note: ===vect_slp_analyze_bb===
+main.c:35:25: note: === vect_analyze_data_refs ===
+main.c:35:25: note: not vectorized: not enough data-refs in basic block.
+main.c:35:25: note: ===vect_slp_analyze_bb===
+main.c:39:1: note: === vect_analyze_data_refs ===
+main.c:39:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:61
+main.c:61:5: note: ===== analyze_loop_nest =====
+main.c:61:5: note: === vect_analyze_loop_form ===
+main.c:61:5: note: not vectorized: multiple nested loops.
+main.c:61:5: note: bad loop form.
+
+Analyzing loop at main.c:62
+main.c:62:9: note: ===== analyze_loop_nest =====
+main.c:62:9: note: === vect_analyze_loop_form ===
+main.c:62:9: note: === vect_analyze_loop_form ===
+main.c:62:9: note: === get_loop_niters ===
+main.c:62:9: note: Considering outer-loop vectorization.
+main.c:62:9: note: === get_loop_niters ===
+main.c:62:9: note: Symbolic number of iterations is size_1(D)
+main.c:62:9: note: === vect_analyze_data_refs ===
+main.c:62:9: note: analyze in outer-loop: *(a_26(D) + _11)
+main.c:62:9: note: 	outer base_address: a_26(D) + (sizetype) _11
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 4
+	outer aligned to: 128
+main.c:62:9: note: got vectype for stmt: _13 = *_12[k_46];
+vector(4) float
+main.c:62:9: note: analyze in outer-loop: *(b_27(D) + _15)
+main.c:62:9: note: failed: evolution of base is not affine.
+main.c:62:9: note: bad data references.
+
+Analyzing loop at main.c:63
+main.c:63:13: note: ===== analyze_loop_nest =====
+main.c:63:13: note: === vect_analyze_loop_form ===
+main.c:63:13: note: === get_loop_niters ===
+main.c:63:13: note: Symbolic number of iterations is size_1(D)
+main.c:63:13: note: === vect_analyze_data_refs ===
+main.c:63:13: note: got vectype for stmt: _13 = *_12[k_46];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: _17 = *_16[j_45];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: _19 = *_18[j_45];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: *_18[j_45] = _20;
+vector(4) float
+main.c:63:13: note: === vect_analyze_scalar_cycles ===
+main.c:63:13: note: Analyze phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:63:13: note: Analyze phi: j_45 = PHI <j_30(4), 0(8)>
+main.c:63:13: note: Access function of PHI: {0, +, 1}_3
+main.c:63:13: note: step: 1,  init: 0
+main.c:63:13: note: Detected induction.
+main.c:63:13: note: === vect_pattern_recog ===
+main.c:63:13: note: vect_is_simple_use: operand _13
+main.c:63:13: note: def_stmt: _13 = *_12[k_46];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: === vect_analyze_data_ref_accesses ===
+main.c:63:13: note: === vect_mark_stmts_to_be_vectorized ===
+main.c:63:13: note: init: phi relevant? .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:63:13: note: init: phi relevant? j_45 = PHI <j_30(4), 0(8)>
+main.c:63:13: note: init: stmt relevant? _13 = *_12[k_46];
+main.c:63:13: note: init: stmt relevant? _17 = *_16[j_45];
+main.c:63:13: note: init: stmt relevant? _28 = _13 * _17;
+main.c:63:13: note: init: stmt relevant? _19 = *_18[j_45];
+main.c:63:13: note: init: stmt relevant? _20 = _19 + _28;
+main.c:63:13: note: init: stmt relevant? *_18[j_45] = _20;
+main.c:63:13: note: vec_stmt_relevant_p: stmt has vdefs.
+main.c:63:13: note: mark relevant 5, live 0: *_18[j_45] = _20;
+main.c:63:13: note: init: stmt relevant? j_30 = j_45 + 1;
+main.c:63:13: note: init: stmt relevant? if (size_1(D) > j_30)
+main.c:63:13: note: worklist: examine stmt: *_18[j_45] = _20;
+main.c:63:13: note: vect_is_simple_use: operand _20
+main.c:63:13: note: def_stmt: _20 = _19 + _28;
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: mark relevant 5, live 0: _20 = _19 + _28;
+main.c:63:13: note: worklist: examine stmt: _20 = _19 + _28;
+main.c:63:13: note: vect_is_simple_use: operand _19
+main.c:63:13: note: def_stmt: _19 = *_18[j_45];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: mark relevant 5, live 0: _19 = *_18[j_45];
+main.c:63:13: note: vect_is_simple_use: operand _28
+main.c:63:13: note: def_stmt: _28 = _13 * _17;
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: mark relevant 5, live 0: _28 = _13 * _17;
+main.c:63:13: note: worklist: examine stmt: _28 = _13 * _17;
+main.c:63:13: note: vect_is_simple_use: operand _13
+main.c:63:13: note: def_stmt: _13 = *_12[k_46];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: mark relevant 5, live 0: _13 = *_12[k_46];
+main.c:63:13: note: vect_is_simple_use: operand _17
+main.c:63:13: note: def_stmt: _17 = *_16[j_45];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: mark relevant 5, live 0: _17 = *_16[j_45];
+main.c:63:13: note: worklist: examine stmt: _17 = *_16[j_45];
+main.c:63:13: note: worklist: examine stmt: _13 = *_12[k_46];
+main.c:63:13: note: worklist: examine stmt: _19 = *_18[j_45];
+main.c:63:13: note: === vect_analyze_data_ref_dependences ===
+main.c:63:13: note: versioning for alias required: can't determine dependence between *_12[k_46] and *_18[j_45]
+main.c:63:13: note: mark for run-time aliasing test between *_12[k_46] and *_18[j_45]
+main.c:63:13: note: versioning for alias required: can't determine dependence between *_16[j_45] and *_18[j_45]
+main.c:63:13: note: mark for run-time aliasing test between *_16[j_45] and *_18[j_45]
+main.c:63:13: note: dependence distance  = 0.
+main.c:63:13: note: dependence distance == 0 between *_18[j_45] and *_18[j_45]
+main.c:63:13: note: === vect_determine_vectorization_factor ===
+main.c:63:13: note: ==> examining phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:63:13: note: ==> examining phi: j_45 = PHI <j_30(4), 0(8)>
+main.c:63:13: note: ==> examining statement: _13 = *_12[k_46];
+main.c:63:13: note: get vectype for scalar type:  float
+main.c:63:13: note: vectype: vector(4) float
+main.c:63:13: note: nunits = 4
+main.c:63:13: note: ==> examining statement: _17 = *_16[j_45];
+main.c:63:13: note: get vectype for scalar type:  float
+main.c:63:13: note: vectype: vector(4) float
+main.c:63:13: note: nunits = 4
+main.c:63:13: note: ==> examining statement: _28 = _13 * _17;
+main.c:63:13: note: get vectype for scalar type:  float
+main.c:63:13: note: vectype: vector(4) float
+main.c:63:13: note: get vectype for scalar type:  float
+main.c:63:13: note: vectype: vector(4) float
+main.c:63:13: note: nunits = 4
+main.c:63:13: note: ==> examining statement: _19 = *_18[j_45];
+main.c:63:13: note: get vectype for scalar type:  float
+main.c:63:13: note: vectype: vector(4) float
+main.c:63:13: note: nunits = 4
+main.c:63:13: note: ==> examining statement: _20 = _19 + _28;
+main.c:63:13: note: get vectype for scalar type:  float
+main.c:63:13: note: vectype: vector(4) float
+main.c:63:13: note: get vectype for scalar type:  float
+main.c:63:13: note: vectype: vector(4) float
+main.c:63:13: note: nunits = 4
+main.c:63:13: note: ==> examining statement: *_18[j_45] = _20;
+main.c:63:13: note: get vectype for scalar type:  float
+main.c:63:13: note: vectype: vector(4) float
+main.c:63:13: note: nunits = 4
+main.c:63:13: note: ==> examining statement: j_30 = j_45 + 1;
+main.c:63:13: note: skip.
+main.c:63:13: note: ==> examining statement: if (size_1(D) > j_30)
+main.c:63:13: note: skip.
+main.c:63:13: note: vectorization factor = 4
+main.c:63:13: note: === vect_analyze_slp ===
+main.c:63:13: note: === vect_make_slp_decision ===
+main.c:63:13: note: === vect_analyze_data_refs_alignment ===
+main.c:63:13: note: dependence distance  = 0.
+main.c:63:13: note: accesses have the same alignment.
+dependence distance modulo vf == 0 between *_18[j_45] and *_18[j_45]
+main.c:63:13: note: vect_compute_data_ref_alignment:
+main.c:63:13: note: Unknown alignment for access: *_12[k_46]
+main.c:63:13: note: vect_compute_data_ref_alignment:
+main.c:63:13: note: can't force alignment of ref: *_16[j_45]
+main.c:63:13: note: vect_compute_data_ref_alignment:
+main.c:63:13: note: can't force alignment of ref: *_18[j_45]
+main.c:63:13: note: vect_compute_data_ref_alignment:
+main.c:63:13: note: can't force alignment of ref: *_18[j_45]
+main.c:63:13: note: === vect_prune_runtime_alias_test_list ===
+main.c:63:13: note: improved number of alias checks from 2 to 2
+main.c:63:13: note: === vect_enhance_data_refs_alignment ===
+main.c:63:13: note: Unknown misalignment, naturally aligned
+main.c:63:13: note: Unknown misalignment, naturally aligned
+main.c:63:13: note: Unknown misalignment, naturally aligned
+main.c:63:13: note: vect_can_advance_ivs_p:
+main.c:63:13: note: Analyze phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:63:13: note: reduc or virtual phi. skip.
+main.c:63:13: note: Analyze phi: j_45 = PHI <j_30(4), 0(8)>
+main.c:63:13: note: vect_model_load_cost: unaligned supported by hardware.
+main.c:63:13: note: vect_get_data_access_cost: inside_cost = 2, outside_cost = 0.
+main.c:63:13: note: vect_model_store_cost: unaligned supported by hardware.
+main.c:63:13: note: vect_get_data_access_cost: inside_cost = 2, outside_cost = 0.
+main.c:63:13: note: Setting misalignment to -1.
+main.c:63:13: note: Setting misalignment to -1.
+main.c:63:13: note: Disable peeling, max peels reached: 3
+main.c:63:13: note: Vectorizing an unaligned access.
+main.c:63:13: note: Vectorizing an unaligned access.
+main.c:63:13: note: Vectorizing an unaligned access.
+main.c:63:13: note: Vectorizing an unaligned access.
+main.c:63:13: note: === vect_analyze_loop_operations ===
+main.c:63:13: note: examining phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:63:13: note: examining phi: j_45 = PHI <j_30(4), 0(8)>
+main.c:63:13: note: ==> examining statement: _13 = *_12[k_46];
+main.c:63:13: note: num. args = 4 (not unary/binary/ternary op).
+main.c:63:13: note: vect_is_simple_use: operand *_12[k_46]
+main.c:63:13: note: not ssa-name.
+main.c:63:13: note: use not simple.
+main.c:63:13: note: vect_model_load_cost: unaligned supported by hardware.
+main.c:63:13: note: vect_model_load_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:63:13: note: ==> examining statement: _17 = *_16[j_45];
+main.c:63:13: note: num. args = 4 (not unary/binary/ternary op).
+main.c:63:13: note: vect_is_simple_use: operand *_16[j_45]
+main.c:63:13: note: not ssa-name.
+main.c:63:13: note: use not simple.
+main.c:63:13: note: vect_model_load_cost: unaligned supported by hardware.
+main.c:63:13: note: vect_model_load_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:63:13: note: ==> examining statement: _28 = _13 * _17;
+main.c:63:13: note: vect_is_simple_use: operand _13
+main.c:63:13: note: def_stmt: _13 = *_12[k_46];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: vect_is_simple_use: operand _17
+main.c:63:13: note: def_stmt: _17 = *_16[j_45];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: === vectorizable_operation ===
+main.c:63:13: note: vect_model_simple_cost: inside_cost = 1, prologue_cost = 0 .
+main.c:63:13: note: ==> examining statement: _19 = *_18[j_45];
+main.c:63:13: note: num. args = 4 (not unary/binary/ternary op).
+main.c:63:13: note: vect_is_simple_use: operand *_18[j_45]
+main.c:63:13: note: not ssa-name.
+main.c:63:13: note: use not simple.
+main.c:63:13: note: vect_model_load_cost: unaligned supported by hardware.
+main.c:63:13: note: vect_model_load_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:63:13: note: ==> examining statement: _20 = _19 + _28;
+main.c:63:13: note: vect_is_simple_use: operand _19
+main.c:63:13: note: def_stmt: _19 = *_18[j_45];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: vect_is_simple_use: operand _28
+main.c:63:13: note: def_stmt: _28 = _13 * _17;
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: === vectorizable_operation ===
+main.c:63:13: note: vect_model_simple_cost: inside_cost = 1, prologue_cost = 0 .
+main.c:63:13: note: ==> examining statement: *_18[j_45] = _20;
+main.c:63:13: note: vect_is_simple_use: operand _20
+main.c:63:13: note: def_stmt: _20 = _19 + _28;
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: vect_model_store_cost: unaligned supported by hardware.
+main.c:63:13: note: vect_model_store_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:63:13: note: ==> examining statement: j_30 = j_45 + 1;
+main.c:63:13: note: irrelevant.
+main.c:63:13: note: ==> examining statement: if (size_1(D) > j_30)
+main.c:63:13: note: irrelevant.
+cost model: Adding cost of checks for loop versioning aliasing.
+main.c:63:13: note: cost model: epilogue peel iters set to vf/2 because loop iterations are unknown .
+main.c:63:13: note: Cost model analysis: 
+  Vector inside of loop cost: 10
+  Vector prologue cost: 11
+  Vector epilogue cost: 12
+  Scalar iteration cost: 6
+  Scalar outside cost: 1
+  Vector outside cost: 23
+  prologue iterations: 0
+  epilogue iterations: 2
+  Calculated minimum iters for profitability: 5
+main.c:63:13: note:   Runtime profitability threshold = 4
+main.c:63:13: note:   Static estimate profitability threshold = 4
+main.c:63:13: note: epilog loop required
+main.c:63:13: note: vect_can_advance_ivs_p:
+main.c:63:13: note: Analyze phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:63:13: note: reduc or virtual phi. skip.
+main.c:63:13: note: Analyze phi: j_45 = PHI <j_30(4), 0(8)>
+main.c:63:13: note: loop vectorized
+main.c:63:13: note: === vec_transform_loop ===
+main.c:63:13: note: Profitability threshold is 4 loop iterations.
+main.c:63:13: note: create runtime check for data references *_12[k_46] and *_18[j_45]
+main.c:63:13: note: create runtime check for data references *_18[j_45] and *_16[j_45]
+main.c:63:13: note: created 2 versioning for alias checks.
+main.c:63:13: note: loop versioned for vectorization because of possible aliasing
+main.c:63:13: note: vect_update_ivs_after_vectorizer: phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(19)>
+main.c:63:13: note: reduc or virtual phi. skip.
+main.c:63:13: note: vect_update_ivs_after_vectorizer: phi: j_45 = PHI <j_30(4), 0(19)>
+main.c:63:13: note: ------>vectorizing phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(26)>
+main.c:63:13: note: ------>vectorizing phi: j_45 = PHI <j_30(4), 0(26)>
+main.c:63:13: note: ------>vectorizing statement: _13 = *_12[k_46];
+main.c:63:13: note: transform statement.
+main.c:63:13: note: transform load. ncopies = 1
+main.c:63:13: note: create vector_type-pointer variable to type: vector(4) float  vectorizing an array ref: *_12
+main.c:63:13: note: created vectp.97_83
+main.c:63:13: note: add new stmt: vect__13.98_88 = MEM[(float *)vectp.96_86];
+main.c:63:13: note: hoisting out of the vectorized loop: _13 = *_12[k_46];
+main.c:63:13: note: created new init_stmt: vect_cst__90 = {_89, _89, _89, _89};
+main.c:63:13: note: ------>vectorizing statement: _17 = *_16[j_45];
+main.c:63:13: note: transform statement.
+main.c:63:13: note: transform load. ncopies = 1
+main.c:63:13: note: create vector_type-pointer variable to type: vector(4) float  vectorizing an array ref: *_16
+main.c:63:13: note: created vectp.100_91
+main.c:63:13: note: add new stmt: vect__17.101_94 = MEM[(float *)vectp.99_92];
+main.c:63:13: note: ------>vectorizing statement: _28 = _13 * _17;
+main.c:63:13: note: transform statement.
+main.c:63:13: note: vect_is_simple_use: operand _13
+main.c:63:13: note: def_stmt: _13 = *_12[k_46];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: vect_is_simple_use: operand _17
+main.c:63:13: note: def_stmt: _17 = *_16[j_45];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: transform binary/unary operation.
+main.c:63:13: note: vect_get_vec_def_for_operand: _13
+main.c:63:13: note: vect_is_simple_use: operand _13
+main.c:63:13: note: def_stmt: _13 = *_12[k_46];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note:   def_stmt =  _13 = *_12[k_46];
+main.c:63:13: note: vect_get_vec_def_for_operand: _17
+main.c:63:13: note: vect_is_simple_use: operand _17
+main.c:63:13: note: def_stmt: _17 = *_16[j_45];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note:   def_stmt =  _17 = *_16[j_45];
+main.c:63:13: note: add new stmt: vect__28.102_95 = vect_cst__90 * vect__17.101_94;
+main.c:63:13: note: ------>vectorizing statement: _19 = *_18[j_45];
+main.c:63:13: note: transform statement.
+main.c:63:13: note: transform load. ncopies = 1
+main.c:63:13: note: create vector_type-pointer variable to type: vector(4) float  vectorizing an array ref: *_18
+main.c:63:13: note: created vectp.104_96
+main.c:63:13: note: add new stmt: vect__19.105_99 = MEM[(float *)vectp.103_97];
+main.c:63:13: note: ------>vectorizing statement: _20 = _19 + _28;
+main.c:63:13: note: transform statement.
+main.c:63:13: note: vect_is_simple_use: operand _19
+main.c:63:13: note: def_stmt: _19 = *_18[j_45];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: vect_is_simple_use: operand _28
+main.c:63:13: note: def_stmt: _28 = _13 * _17;
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: transform binary/unary operation.
+main.c:63:13: note: vect_get_vec_def_for_operand: _19
+main.c:63:13: note: vect_is_simple_use: operand _19
+main.c:63:13: note: def_stmt: _19 = *_18[j_45];
+main.c:63:13: note: type of def: internal
+main.c:63:13: note:   def_stmt =  _19 = *_18[j_45];
+main.c:63:13: note: vect_get_vec_def_for_operand: _28
+main.c:63:13: note: vect_is_simple_use: operand _28
+main.c:63:13: note: def_stmt: _28 = _13 * _17;
+main.c:63:13: note: type of def: internal
+main.c:63:13: note:   def_stmt =  _28 = _13 * _17;
+main.c:63:13: note: add new stmt: vect__20.106_100 = vect__19.105_99 + vect__28.102_95;
+main.c:63:13: note: ------>vectorizing statement: *_18[j_45] = _20;
+main.c:63:13: note: transform statement.
+main.c:63:13: note: vect_is_simple_use: operand _20
+main.c:63:13: note: def_stmt: _20 = _19 + _28;
+main.c:63:13: note: type of def: internal
+main.c:63:13: note: transform store. ncopies = 1
+main.c:63:13: note: vect_get_vec_def_for_operand: _20
+main.c:63:13: note: vect_is_simple_use: operand _20
+main.c:63:13: note: def_stmt: _20 = _19 + _28;
+main.c:63:13: note: type of def: internal
+main.c:63:13: note:   def_stmt =  _20 = _19 + _28;
+main.c:63:13: note: create vector_type-pointer variable to type: vector(4) float  vectorizing an array ref: *_18
+main.c:63:13: note: created vectp.108_101
+main.c:63:13: note: add new stmt: MEM[(float *)vectp.107_102] = vect__20.106_100;
+main.c:63:13: note: ------>vectorizing statement: j_30 = j_45 + 1;
+main.c:63:13: note: ------>vectorizing statement: vectp.96_87 = vectp.96_86 + 0;
+main.c:63:13: note: ------>vectorizing statement: vectp.99_93 = vectp.99_92 + 16;
+main.c:63:13: note: ------>vectorizing statement: vectp.103_98 = vectp.103_97 + 16;
+main.c:63:13: note: ------>vectorizing statement: vectp.107_103 = vectp.107_102 + 16;
+main.c:63:13: note: ------>vectorizing statement: if (size_1(D) > j_30)
+
+loop at main.c:64: if (ivtmp_106 < bnd.93_80)
+main.c:63:13: note: LOOP VECTORIZED
+
+main.c:57:6: note: vectorized 1 loops in function.
+main.c:57:6: note: ===vect_slp_analyze_bb===
+main.c:59:5: note: === vect_analyze_data_refs ===
+main.c:59:5: note: not vectorized: not enough data-refs in basic block.
+main.c:61:5: note: === vect_analyze_data_refs ===
+main.c:61:5: note: not vectorized: not enough data-refs in basic block.
+main.c:61:5: note: ===vect_slp_analyze_bb===
+main.c:61:5: note: === vect_analyze_data_refs ===
+main.c:61:5: note: not vectorized: not enough data-refs in basic block.
+main.c:61:5: note: ===vect_slp_analyze_bb===
+main.c:61:5: note: ===vect_slp_analyze_bb===
+main.c:61:5: note: === vect_analyze_data_refs ===
+main.c:61:5: note: not vectorized: not enough data-refs in basic block.
+main.c:61:5: note: ===vect_slp_analyze_bb===
+main.c:61:5: note: ===vect_slp_analyze_bb===
+main.c:63:13: note: === vect_analyze_data_refs ===
+main.c:63:13: note: got vectype for stmt: _2 = *_12[k_46];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: _70 = *_16[j_61];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: _72 = *_18[j_61];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: *_18[j_61] = _73;
+vector(4) float
+main.c:63:13: note: === vect_analyze_data_ref_accesses ===
+main.c:63:13: note: not consecutive access _2 = *_12[k_46];
+main.c:63:13: note: not vectorized: no grouped stores in basic block.
+main.c:63:13: note: ===vect_slp_analyze_bb===
+main.c:63:13: note: ===vect_slp_analyze_bb===
+main.c:63:13: note: ===vect_slp_analyze_bb===
+main.c:63:13: note: === vect_analyze_data_refs ===
+main.c:63:13: note: got vectype for stmt: _10 = *_12[k_46];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: _4 = *_16[j_14];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: _68 = *_18[j_14];
+vector(4) float
+main.c:63:13: note: got vectype for stmt: *_18[j_14] = _67;
+vector(4) float
+main.c:63:13: note: === vect_analyze_data_ref_accesses ===
+main.c:63:13: note: not consecutive access _10 = *_12[k_46];
+main.c:63:13: note: not vectorized: no grouped stores in basic block.
+main.c:63:13: note: ===vect_slp_analyze_bb===
+main.c:63:13: note: ===vect_slp_analyze_bb===
+main.c:63:13: note: === vect_analyze_data_refs ===
+main.c:63:13: note: not vectorized: not enough data-refs in basic block.
+main.c:63:13: note: ===vect_slp_analyze_bb===
+main.c:63:13: note: === vect_analyze_data_refs ===
+main.c:63:13: note: got vectype for stmt: _89 = *_12[k_46];
+vector(4) float
+main.c:63:13: note: not vectorized: not enough data-refs in basic block.
+main.c:63:13: note: ===vect_slp_analyze_bb===
+main.c:64:25: note: === vect_analyze_data_refs ===
+main.c:64:25: note: not vectorized: no vectype for stmt: vect__17.101_94 = MEM[(float *)vectp.99_92];
+ scalar_type: vector(4) float
+main.c:64:25: note: not vectorized: no vectype for stmt: vect__19.105_99 = MEM[(float *)vectp.103_97];
+ scalar_type: vector(4) float
+main.c:64:25: note: not vectorized: no vectype for stmt: MEM[(float *)vectp.107_102] = vect__20.106_100;
+ scalar_type: vector(4) float
+main.c:64:25: note: === vect_analyze_data_ref_accesses ===
+main.c:64:25: note: not vectorized: no grouped stores in basic block.
+main.c:64:25: note: ===vect_slp_analyze_bb===
+main.c:64:25: note: ===vect_slp_analyze_bb===
+main.c:62:9: note: === vect_analyze_data_refs ===
+main.c:62:9: note: not vectorized: not enough data-refs in basic block.
+main.c:62:9: note: ===vect_slp_analyze_bb===
+main.c:62:9: note: ===vect_slp_analyze_bb===
+main.c:64:39: note: === vect_analyze_data_refs ===
+main.c:64:39: note: not vectorized: not enough data-refs in basic block.
+main.c:64:39: note: ===vect_slp_analyze_bb===
+main.c:61:5: note: === vect_analyze_data_refs ===
+main.c:61:5: note: not vectorized: not enough data-refs in basic block.
+main.c:61:5: note: ===vect_slp_analyze_bb===
+main.c:61:5: note: ===vect_slp_analyze_bb===
+main.c:64:25: note: === vect_analyze_data_refs ===
+main.c:64:25: note: not vectorized: not enough data-refs in basic block.
+main.c:64:25: note: ===vect_slp_analyze_bb===
+main.c:68:1: note: === vect_analyze_data_refs ===
+main.c:68:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:75
+main.c:75:5: note: ===== analyze_loop_nest =====
+main.c:75:5: note: === vect_analyze_loop_form ===
+main.c:75:5: note: not vectorized: multiple nested loops.
+main.c:75:5: note: bad loop form.
+
+Analyzing loop at main.c:76
+main.c:76:9: note: ===== analyze_loop_nest =====
+main.c:76:9: note: === vect_analyze_loop_form ===
+main.c:76:9: note: === vect_analyze_loop_form ===
+main.c:76:9: note: === get_loop_niters ===
+main.c:76:9: note: Considering outer-loop vectorization.
+main.c:76:9: note: === get_loop_niters ===
+main.c:76:9: note: Symbolic number of iterations is size_1(D)
+main.c:76:9: note: === vect_analyze_data_refs ===
+main.c:76:9: note: analyze in outer-loop: *a_26(D)
+main.c:76:9: note: 	outer base_address: a_26(D)
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 4
+	outer aligned to: 128
+main.c:76:9: note: got vectype for stmt: _13 = *_12[k_46];
+vector(4) float
+main.c:76:9: note: not vectorized: not suitable for strided load _13 = *_12[k_46];
+main.c:76:9: note: bad data references.
+
+Analyzing loop at main.c:77
+main.c:77:13: note: ===== analyze_loop_nest =====
+main.c:77:13: note: === vect_analyze_loop_form ===
+main.c:77:13: note: === get_loop_niters ===
+main.c:77:13: note: Symbolic number of iterations is size_1(D)
+main.c:77:13: note: === vect_analyze_data_refs ===
+main.c:77:13: note: got vectype for stmt: _13 = *_12[k_46];
+vector(4) float
+main.c:77:13: note: got vectype for stmt: _17 = *_16[j_42];
+vector(4) float
+main.c:77:13: note: got vectype for stmt: _19 = *_18[j_42];
+vector(4) float
+main.c:77:13: note: got vectype for stmt: *_18[j_42] = _20;
+vector(4) float
+main.c:77:13: note: === vect_analyze_scalar_cycles ===
+main.c:77:13: note: Analyze phi: .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:77:13: note: Analyze phi: i_45 = PHI <i_30(4), 0(8)>
+main.c:77:13: note: Access function of PHI: {0, +, 1}_3
+main.c:77:13: note: step: 1,  init: 0
+main.c:77:13: note: Detected induction.
+main.c:77:13: note: === vect_pattern_recog ===
+main.c:77:13: note: vect_is_simple_use: operand _7
+main.c:77:13: note: def_stmt: _7 = size_1(D) * 4;
+main.c:77:13: note: type of def: external
+main.c:77:13: note: vect_is_simple_use: operand _13
+main.c:77:13: note: def_stmt: _13 = *_12[k_46];
+main.c:77:13: note: type of def: internal
+main.c:77:13: note: === vect_analyze_data_ref_accesses ===
+main.c:77:13: note: === vect_mark_stmts_to_be_vectorized ===
+main.c:77:13: note: init: phi relevant? .MEM_44 = PHI <.MEM_29(4), .MEM_43(8)>
+main.c:77:13: note: init: phi relevant? i_45 = PHI <i_30(4), 0(8)>
+main.c:77:13: note: init: stmt relevant? _11 = _7 * i_45;
+main.c:77:13: note: init: stmt relevant? _12 = a_26(D) + _11;
+main.c:77:13: note: init: stmt relevant? _13 = *_12[k_46];
+main.c:77:13: note: init: stmt relevant? _17 = *_16[j_42];
+main.c:77:13: note: init: stmt relevant? _28 = _13 * _17;
+main.c:77:13: note: init: stmt relevant? _18 = c_22(D) + _11;
+main.c:77:13: note: init: stmt relevant? _19 = *_18[j_42];
+main.c:77:13: note: init: stmt relevant? _20 = _19 + _28;
+main.c:77:13: note: init: stmt relevant? *_18[j_42] = _20;
+main.c:77:13: note: vec_stmt_relevant_p: stmt has vdefs.
+main.c:77:13: note: mark relevant 5, live 0: *_18[j_42] = _20;
+main.c:77:13: note: init: stmt relevant? i_30 = i_45 + 1;
+main.c:77:13: note: init: stmt relevant? if (size_1(D) > i_30)
+main.c:77:13: note: worklist: examine stmt: *_18[j_42] = _20;
+main.c:77:13: note: vect_is_simple_use: operand _20
+main.c:77:13: note: def_stmt: _20 = _19 + _28;
+main.c:77:13: note: type of def: internal
+main.c:77:13: note: mark relevant 5, live 0: _20 = _19 + _28;
+main.c:77:13: note: worklist: examine stmt: _20 = _19 + _28;
+main.c:77:13: note: vect_is_simple_use: operand _19
+main.c:77:13: note: def_stmt: _19 = *_18[j_42];
+main.c:77:13: note: type of def: internal
+main.c:77:13: note: mark relevant 5, live 0: _19 = *_18[j_42];
+main.c:77:13: note: vect_is_simple_use: operand _28
+main.c:77:13: note: def_stmt: _28 = _13 * _17;
+main.c:77:13: note: type of def: internal
+main.c:77:13: note: mark relevant 5, live 0: _28 = _13 * _17;
+main.c:77:13: note: worklist: examine stmt: _28 = _13 * _17;
+main.c:77:13: note: vect_is_simple_use: operand _13
+main.c:77:13: note: def_stmt: _13 = *_12[k_46];
+main.c:77:13: note: type of def: internal
+main.c:77:13: note: mark relevant 5, live 0: _13 = *_12[k_46];
+main.c:77:13: note: vect_is_simple_use: operand _17
+main.c:77:13: note: def_stmt: _17 = *_16[j_42];
+main.c:77:13: note: type of def: internal
+main.c:77:13: note: mark relevant 5, live 0: _17 = *_16[j_42];
+main.c:77:13: note: worklist: examine stmt: _17 = *_16[j_42];
+main.c:77:13: note: worklist: examine stmt: _13 = *_12[k_46];
+main.c:77:13: note: worklist: examine stmt: _19 = *_18[j_42];
+main.c:77:13: note: === vect_analyze_data_ref_dependences ===
+main.c:77:13: note: versioning for alias required: can't determine dependence between *_12[k_46] and *_18[j_42]
+main.c:77:13: note: mark for run-time aliasing test between *_12[k_46] and *_18[j_42]
+main.c:77:13: note: versioning not yet supported for non-constant step
+main.c:77:13: note: bad data dependence.
+main.c:71:6: note: vectorized 0 loops in function.
+main.c:71:6: note: ===vect_slp_analyze_bb===
+main.c:73:5: note: === vect_analyze_data_refs ===
+main.c:73:5: note: not vectorized: not enough data-refs in basic block.
+main.c:75:5: note: === vect_analyze_data_refs ===
+main.c:75:5: note: not vectorized: not enough data-refs in basic block.
+main.c:75:5: note: ===vect_slp_analyze_bb===
+main.c:75:5: note: === vect_analyze_data_refs ===
+main.c:75:5: note: not vectorized: not enough data-refs in basic block.
+main.c:75:5: note: ===vect_slp_analyze_bb===
+main.c:75:5: note: ===vect_slp_analyze_bb===
+main.c:77:13: note: === vect_analyze_data_refs ===
+main.c:77:13: note: got vectype for stmt: _13 = *_12[k_46];
+vector(4) float
+main.c:77:13: note: got vectype for stmt: _17 = *_16[j_42];
+vector(4) float
+main.c:77:13: note: got vectype for stmt: _19 = *_18[j_42];
+vector(4) float
+main.c:77:13: note: got vectype for stmt: *_18[j_42] = _20;
+vector(4) float
+main.c:77:13: note: === vect_analyze_data_ref_accesses ===
+main.c:77:13: note: not consecutive access _13 = *_12[k_46];
+main.c:77:13: note: not consecutive access _19 = *_18[j_42];
+main.c:77:13: note: not consecutive access *_18[j_42] = _20;
+main.c:77:13: note: not consecutive access _17 = *_16[j_42];
+main.c:77:13: note: not vectorized: no grouped stores in basic block.
+main.c:77:13: note: ===vect_slp_analyze_bb===
+main.c:76:9: note: === vect_analyze_data_refs ===
+main.c:76:9: note: not vectorized: not enough data-refs in basic block.
+main.c:76:9: note: ===vect_slp_analyze_bb===
+main.c:76:9: note: ===vect_slp_analyze_bb===
+main.c:78:39: note: === vect_analyze_data_refs ===
+main.c:78:39: note: not vectorized: not enough data-refs in basic block.
+main.c:78:39: note: ===vect_slp_analyze_bb===
+main.c:75:5: note: === vect_analyze_data_refs ===
+main.c:75:5: note: not vectorized: not enough data-refs in basic block.
+main.c:75:5: note: ===vect_slp_analyze_bb===
+main.c:75:5: note: ===vect_slp_analyze_bb===
+main.c:75:5: note: ===vect_slp_analyze_bb===
+main.c:82:1: note: === vect_analyze_data_refs ===
+main.c:82:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:47
+main.c:47:5: note: ===== analyze_loop_nest =====
+main.c:47:5: note: === vect_analyze_loop_form ===
+main.c:47:5: note: not vectorized: multiple nested loops.
+main.c:47:5: note: bad loop form.
+
+Analyzing loop at main.c:48
+main.c:48:9: note: ===== analyze_loop_nest =====
+main.c:48:9: note: === vect_analyze_loop_form ===
+main.c:48:9: note: === vect_analyze_loop_form ===
+main.c:48:9: note: === get_loop_niters ===
+main.c:48:9: note: Considering outer-loop vectorization.
+main.c:48:9: note: === get_loop_niters ===
+main.c:48:9: note: Symbolic number of iterations is size_1(D)
+main.c:48:9: note: === vect_analyze_data_refs ===
+main.c:48:9: note: got vectype for stmt: pretmp_68 = *_18[j_47];
+vector(4) float
+main.c:48:9: note: analyze in outer-loop: *(a_28(D) + _11)
+main.c:48:9: note: 	outer base_address: a_28(D) + (sizetype) _11
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 0
+	outer aligned to: 128
+main.c:48:9: note: got vectype for stmt: _13 = *_12[k_46];
+vector(4) float
+main.c:48:9: note: analyze in outer-loop: *(b_24(D) + _15)
+main.c:48:9: note: failed: evolution of base is not affine.
+main.c:48:9: note: bad data references.
+
+Analyzing loop at main.c:49
+main.c:49:13: note: ===== analyze_loop_nest =====
+main.c:49:13: note: === vect_analyze_loop_form ===
+main.c:49:13: note: === get_loop_niters ===
+main.c:49:13: note: Symbolic number of iterations is size_1(D)
+main.c:49:13: note: === vect_analyze_data_refs ===
+main.c:49:13: note: got vectype for stmt: _13 = *_12[k_46];
+vector(4) float
+main.c:49:13: note: got vectype for stmt: _17 = *_16[k_46];
+vector(4) float
+main.c:49:13: note: got vectype for stmt: *_18[j_47] = _20;
+vector(4) float
+main.c:49:13: note: === vect_analyze_scalar_cycles ===
+main.c:49:13: note: Analyze phi: .MEM_45 = PHI <.MEM_30(4), .MEM_44(8)>
+main.c:49:13: note: Analyze phi: k_46 = PHI <k_31(4), 0(8)>
+main.c:49:13: note: Access function of PHI: {0, +, 1}_3
+main.c:49:13: note: step: 1,  init: 0
+main.c:49:13: note: Detected induction.
+main.c:49:13: note: Analyze phi: prephitmp_69 = PHI <_20(4), pretmp_68(8)>
+main.c:49:13: note: Access function of PHI: {pretmp_68, +, _29}_3
+main.c:49:13: note: step: _29,  init: pretmp_68
+main.c:49:13: note: step unknown.
+main.c:49:13: note: Analyze phi: prephitmp_69 = PHI <_20(4), pretmp_68(8)>
+main.c:49:13: note: reduction used in loop.
+main.c:49:13: note: Unknown def-use cycle pattern.
+main.c:49:13: note: === vect_pattern_recog ===
+main.c:49:13: note: vect_is_simple_use: operand _13
+main.c:49:13: note: def_stmt: _13 = *_12[k_46];
+main.c:49:13: note: type of def: internal
+main.c:49:13: note: === vect_analyze_data_ref_accesses ===
+main.c:49:13: note: not vectorized: complicated access pattern.
+main.c:49:13: note: bad data access.
+main.c:41:6: note: vectorized 0 loops in function.
+main.c:41:6: note: ===vect_slp_analyze_bb===
+main.c:43:5: note: === vect_analyze_data_refs ===
+main.c:43:5: note: not vectorized: not enough data-refs in basic block.
+main.c:47:5: note: === vect_analyze_data_refs ===
+main.c:47:5: note: not vectorized: not enough data-refs in basic block.
+main.c:47:5: note: ===vect_slp_analyze_bb===
+main.c:47:5: note: === vect_analyze_data_refs ===
+main.c:47:5: note: not vectorized: not enough data-refs in basic block.
+main.c:47:5: note: ===vect_slp_analyze_bb===
+main.c:47:5: note: ===vect_slp_analyze_bb===
+main.c:49:13: note: === vect_analyze_data_refs ===
+main.c:49:13: note: got vectype for stmt: _13 = *_12[k_46];
+vector(4) float
+main.c:49:13: note: got vectype for stmt: _17 = *_16[k_46];
+vector(4) float
+main.c:49:13: note: got vectype for stmt: *_18[j_47] = _20;
+vector(4) float
+main.c:49:13: note: === vect_analyze_data_ref_accesses ===
+main.c:49:13: note: not consecutive access *_18[j_47] = _20;
+main.c:49:13: note: not vectorized: no grouped stores in basic block.
+main.c:49:13: note: ===vect_slp_analyze_bb===
+main.c:48:9: note: === vect_analyze_data_refs ===
+main.c:48:9: note: not vectorized: not enough data-refs in basic block.
+main.c:48:9: note: ===vect_slp_analyze_bb===
+main.c:48:9: note: ===vect_slp_analyze_bb===
+main.c:50:39: note: === vect_analyze_data_refs ===
+main.c:50:39: note: got vectype for stmt: pretmp_68 = *_18[j_47];
+vector(4) float
+main.c:50:39: note: not vectorized: not enough data-refs in basic block.
+main.c:50:39: note: ===vect_slp_analyze_bb===
+main.c:47:5: note: === vect_analyze_data_refs ===
+main.c:47:5: note: not vectorized: not enough data-refs in basic block.
+main.c:47:5: note: ===vect_slp_analyze_bb===
+main.c:47:5: note: ===vect_slp_analyze_bb===
+main.c:50:25: note: === vect_analyze_data_refs ===
+main.c:50:25: note: not vectorized: not enough data-refs in basic block.
+main.c:50:25: note: ===vect_slp_analyze_bb===
+main.c:54:1: note: === vect_analyze_data_refs ===
+main.c:54:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:90
+main.c:90:5: note: ===== analyze_loop_nest =====
+main.c:90:5: note: === vect_analyze_loop_form ===
+main.c:90:5: note: not vectorized: multiple nested loops.
+main.c:90:5: note: bad loop form.
+
+Analyzing loop at main.c:91
+main.c:91:9: note: ===== analyze_loop_nest =====
+main.c:91:9: note: === vect_analyze_loop_form ===
+main.c:91:9: note: === vect_analyze_loop_form ===
+main.c:91:9: note: === get_loop_niters ===
+main.c:91:9: note: Considering outer-loop vectorization.
+main.c:91:9: note: === get_loop_niters ===
+main.c:91:9: note: Symbolic number of iterations is size_1(D)
+main.c:91:9: note: === vect_analyze_data_refs ===
+main.c:91:9: note: analyze in outer-loop: *(a_24(D) + _11)
+main.c:91:9: note: failed: evolution of base is not affine.
+main.c:91:9: note: bad data references.
+
+Analyzing loop at main.c:92
+main.c:92:13: note: ===== analyze_loop_nest =====
+main.c:92:13: note: === vect_analyze_loop_form ===
+main.c:92:13: note: === get_loop_niters ===
+main.c:92:13: note: Symbolic number of iterations is size_1(D)
+main.c:92:13: note: === vect_analyze_data_refs ===
+main.c:92:13: note: got vectype for stmt: _13 = *_12[i_49];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: _17 = *_16[k_50];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: _19 = *_18[i_49];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: *_18[i_49] = _20;
+vector(4) float
+main.c:92:13: note: === vect_analyze_scalar_cycles ===
+main.c:92:13: note: Analyze phi: .MEM_48 = PHI <.MEM_32(4), .MEM_47(8)>
+main.c:92:13: note: Analyze phi: i_49 = PHI <i_33(4), 0(8)>
+main.c:92:13: note: Access function of PHI: {0, +, 1}_3
+main.c:92:13: note: step: 1,  init: 0
+main.c:92:13: note: Detected induction.
+main.c:92:13: note: === vect_pattern_recog ===
+main.c:92:13: note: vect_is_simple_use: operand _13
+main.c:92:13: note: def_stmt: _13 = *_12[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: === vect_analyze_data_ref_accesses ===
+main.c:92:13: note: === vect_mark_stmts_to_be_vectorized ===
+main.c:92:13: note: init: phi relevant? .MEM_48 = PHI <.MEM_32(4), .MEM_47(8)>
+main.c:92:13: note: init: phi relevant? i_49 = PHI <i_33(4), 0(8)>
+main.c:92:13: note: init: stmt relevant? _13 = *_12[i_49];
+main.c:92:13: note: init: stmt relevant? _17 = *_16[k_50];
+main.c:92:13: note: init: stmt relevant? _31 = _13 * _17;
+main.c:92:13: note: init: stmt relevant? _19 = *_18[i_49];
+main.c:92:13: note: init: stmt relevant? _20 = _19 + _31;
+main.c:92:13: note: init: stmt relevant? *_18[i_49] = _20;
+main.c:92:13: note: vec_stmt_relevant_p: stmt has vdefs.
+main.c:92:13: note: mark relevant 5, live 0: *_18[i_49] = _20;
+main.c:92:13: note: init: stmt relevant? i_33 = i_49 + 1;
+main.c:92:13: note: init: stmt relevant? if (size_1(D) > i_33)
+main.c:92:13: note: worklist: examine stmt: *_18[i_49] = _20;
+main.c:92:13: note: vect_is_simple_use: operand _20
+main.c:92:13: note: def_stmt: _20 = _19 + _31;
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: mark relevant 5, live 0: _20 = _19 + _31;
+main.c:92:13: note: worklist: examine stmt: _20 = _19 + _31;
+main.c:92:13: note: vect_is_simple_use: operand _19
+main.c:92:13: note: def_stmt: _19 = *_18[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: mark relevant 5, live 0: _19 = *_18[i_49];
+main.c:92:13: note: vect_is_simple_use: operand _31
+main.c:92:13: note: def_stmt: _31 = _13 * _17;
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: mark relevant 5, live 0: _31 = _13 * _17;
+main.c:92:13: note: worklist: examine stmt: _31 = _13 * _17;
+main.c:92:13: note: vect_is_simple_use: operand _13
+main.c:92:13: note: def_stmt: _13 = *_12[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: mark relevant 5, live 0: _13 = *_12[i_49];
+main.c:92:13: note: vect_is_simple_use: operand _17
+main.c:92:13: note: def_stmt: _17 = *_16[k_50];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: mark relevant 5, live 0: _17 = *_16[k_50];
+main.c:92:13: note: worklist: examine stmt: _17 = *_16[k_50];
+main.c:92:13: note: worklist: examine stmt: _13 = *_12[i_49];
+main.c:92:13: note: worklist: examine stmt: _19 = *_18[i_49];
+main.c:92:13: note: === vect_analyze_data_ref_dependences ===
+main.c:92:13: note: versioning for alias required: can't determine dependence between *_12[i_49] and *_18[i_49]
+main.c:92:13: note: mark for run-time aliasing test between *_12[i_49] and *_18[i_49]
+main.c:92:13: note: versioning for alias required: can't determine dependence between *_16[k_50] and *_18[i_49]
+main.c:92:13: note: mark for run-time aliasing test between *_16[k_50] and *_18[i_49]
+main.c:92:13: note: dependence distance  = 0.
+main.c:92:13: note: dependence distance == 0 between *_18[i_49] and *_18[i_49]
+main.c:92:13: note: === vect_determine_vectorization_factor ===
+main.c:92:13: note: ==> examining phi: .MEM_48 = PHI <.MEM_32(4), .MEM_47(8)>
+main.c:92:13: note: ==> examining phi: i_49 = PHI <i_33(4), 0(8)>
+main.c:92:13: note: ==> examining statement: _13 = *_12[i_49];
+main.c:92:13: note: get vectype for scalar type:  float
+main.c:92:13: note: vectype: vector(4) float
+main.c:92:13: note: nunits = 4
+main.c:92:13: note: ==> examining statement: _17 = *_16[k_50];
+main.c:92:13: note: get vectype for scalar type:  float
+main.c:92:13: note: vectype: vector(4) float
+main.c:92:13: note: nunits = 4
+main.c:92:13: note: ==> examining statement: _31 = _13 * _17;
+main.c:92:13: note: get vectype for scalar type:  float
+main.c:92:13: note: vectype: vector(4) float
+main.c:92:13: note: get vectype for scalar type:  float
+main.c:92:13: note: vectype: vector(4) float
+main.c:92:13: note: nunits = 4
+main.c:92:13: note: ==> examining statement: _19 = *_18[i_49];
+main.c:92:13: note: get vectype for scalar type:  float
+main.c:92:13: note: vectype: vector(4) float
+main.c:92:13: note: nunits = 4
+main.c:92:13: note: ==> examining statement: _20 = _19 + _31;
+main.c:92:13: note: get vectype for scalar type:  float
+main.c:92:13: note: vectype: vector(4) float
+main.c:92:13: note: get vectype for scalar type:  float
+main.c:92:13: note: vectype: vector(4) float
+main.c:92:13: note: nunits = 4
+main.c:92:13: note: ==> examining statement: *_18[i_49] = _20;
+main.c:92:13: note: get vectype for scalar type:  float
+main.c:92:13: note: vectype: vector(4) float
+main.c:92:13: note: nunits = 4
+main.c:92:13: note: ==> examining statement: i_33 = i_49 + 1;
+main.c:92:13: note: skip.
+main.c:92:13: note: ==> examining statement: if (size_1(D) > i_33)
+main.c:92:13: note: skip.
+main.c:92:13: note: vectorization factor = 4
+main.c:92:13: note: === vect_analyze_slp ===
+main.c:92:13: note: === vect_make_slp_decision ===
+main.c:92:13: note: === vect_analyze_data_refs_alignment ===
+main.c:92:13: note: dependence distance  = 0.
+main.c:92:13: note: accesses have the same alignment.
+dependence distance modulo vf == 0 between *_18[i_49] and *_18[i_49]
+main.c:92:13: note: vect_compute_data_ref_alignment:
+main.c:92:13: note: can't force alignment of ref: *_12[i_49]
+main.c:92:13: note: vect_compute_data_ref_alignment:
+main.c:92:13: note: Unknown alignment for access: *_16[k_50]
+main.c:92:13: note: vect_compute_data_ref_alignment:
+main.c:92:13: note: can't force alignment of ref: *_18[i_49]
+main.c:92:13: note: vect_compute_data_ref_alignment:
+main.c:92:13: note: can't force alignment of ref: *_18[i_49]
+main.c:92:13: note: === vect_prune_runtime_alias_test_list ===
+main.c:92:13: note: improved number of alias checks from 2 to 2
+main.c:92:13: note: === vect_enhance_data_refs_alignment ===
+main.c:92:13: note: Unknown misalignment, naturally aligned
+main.c:92:13: note: Unknown misalignment, naturally aligned
+main.c:92:13: note: Unknown misalignment, naturally aligned
+main.c:92:13: note: vect_can_advance_ivs_p:
+main.c:92:13: note: Analyze phi: .MEM_48 = PHI <.MEM_32(4), .MEM_47(8)>
+main.c:92:13: note: reduc or virtual phi. skip.
+main.c:92:13: note: Analyze phi: i_49 = PHI <i_33(4), 0(8)>
+main.c:92:13: note: vect_model_load_cost: unaligned supported by hardware.
+main.c:92:13: note: vect_get_data_access_cost: inside_cost = 2, outside_cost = 0.
+main.c:92:13: note: vect_model_store_cost: unaligned supported by hardware.
+main.c:92:13: note: vect_get_data_access_cost: inside_cost = 2, outside_cost = 0.
+main.c:92:13: note: Setting misalignment to -1.
+main.c:92:13: note: Setting misalignment to -1.
+main.c:92:13: note: Disable peeling, max peels reached: 3
+main.c:92:13: note: Vectorizing an unaligned access.
+main.c:92:13: note: Vectorizing an unaligned access.
+main.c:92:13: note: Vectorizing an unaligned access.
+main.c:92:13: note: Vectorizing an unaligned access.
+main.c:92:13: note: === vect_analyze_loop_operations ===
+main.c:92:13: note: examining phi: .MEM_48 = PHI <.MEM_32(4), .MEM_47(8)>
+main.c:92:13: note: examining phi: i_49 = PHI <i_33(4), 0(8)>
+main.c:92:13: note: ==> examining statement: _13 = *_12[i_49];
+main.c:92:13: note: num. args = 4 (not unary/binary/ternary op).
+main.c:92:13: note: vect_is_simple_use: operand *_12[i_49]
+main.c:92:13: note: not ssa-name.
+main.c:92:13: note: use not simple.
+main.c:92:13: note: vect_model_load_cost: unaligned supported by hardware.
+main.c:92:13: note: vect_model_load_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:92:13: note: ==> examining statement: _17 = *_16[k_50];
+main.c:92:13: note: num. args = 4 (not unary/binary/ternary op).
+main.c:92:13: note: vect_is_simple_use: operand *_16[k_50]
+main.c:92:13: note: not ssa-name.
+main.c:92:13: note: use not simple.
+main.c:92:13: note: vect_model_load_cost: unaligned supported by hardware.
+main.c:92:13: note: vect_model_load_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:92:13: note: ==> examining statement: _31 = _13 * _17;
+main.c:92:13: note: vect_is_simple_use: operand _13
+main.c:92:13: note: def_stmt: _13 = *_12[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: vect_is_simple_use: operand _17
+main.c:92:13: note: def_stmt: _17 = *_16[k_50];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: === vectorizable_operation ===
+main.c:92:13: note: vect_model_simple_cost: inside_cost = 1, prologue_cost = 0 .
+main.c:92:13: note: ==> examining statement: _19 = *_18[i_49];
+main.c:92:13: note: num. args = 4 (not unary/binary/ternary op).
+main.c:92:13: note: vect_is_simple_use: operand *_18[i_49]
+main.c:92:13: note: not ssa-name.
+main.c:92:13: note: use not simple.
+main.c:92:13: note: vect_model_load_cost: unaligned supported by hardware.
+main.c:92:13: note: vect_model_load_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:92:13: note: ==> examining statement: _20 = _19 + _31;
+main.c:92:13: note: vect_is_simple_use: operand _19
+main.c:92:13: note: def_stmt: _19 = *_18[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: vect_is_simple_use: operand _31
+main.c:92:13: note: def_stmt: _31 = _13 * _17;
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: === vectorizable_operation ===
+main.c:92:13: note: vect_model_simple_cost: inside_cost = 1, prologue_cost = 0 .
+main.c:92:13: note: ==> examining statement: *_18[i_49] = _20;
+main.c:92:13: note: vect_is_simple_use: operand _20
+main.c:92:13: note: def_stmt: _20 = _19 + _31;
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: vect_model_store_cost: unaligned supported by hardware.
+main.c:92:13: note: vect_model_store_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:92:13: note: ==> examining statement: i_33 = i_49 + 1;
+main.c:92:13: note: irrelevant.
+main.c:92:13: note: ==> examining statement: if (size_1(D) > i_33)
+main.c:92:13: note: irrelevant.
+cost model: Adding cost of checks for loop versioning aliasing.
+main.c:92:13: note: cost model: epilogue peel iters set to vf/2 because loop iterations are unknown .
+main.c:92:13: note: Cost model analysis: 
+  Vector inside of loop cost: 10
+  Vector prologue cost: 11
+  Vector epilogue cost: 12
+  Scalar iteration cost: 6
+  Scalar outside cost: 1
+  Vector outside cost: 23
+  prologue iterations: 0
+  epilogue iterations: 2
+  Calculated minimum iters for profitability: 5
+main.c:92:13: note:   Runtime profitability threshold = 4
+main.c:92:13: note:   Static estimate profitability threshold = 4
+main.c:92:13: note: epilog loop required
+main.c:92:13: note: vect_can_advance_ivs_p:
+main.c:92:13: note: Analyze phi: .MEM_48 = PHI <.MEM_32(4), .MEM_47(8)>
+main.c:92:13: note: reduc or virtual phi. skip.
+main.c:92:13: note: Analyze phi: i_49 = PHI <i_33(4), 0(8)>
+main.c:92:13: note: loop vectorized
+main.c:92:13: note: === vec_transform_loop ===
+main.c:92:13: note: Profitability threshold is 4 loop iterations.
+main.c:92:13: note: create runtime check for data references *_12[i_49] and *_18[i_49]
+main.c:92:13: note: create runtime check for data references *_16[k_50] and *_18[i_49]
+main.c:92:13: note: created 2 versioning for alias checks.
+main.c:92:13: note: loop versioned for vectorization because of possible aliasing
+main.c:92:13: note: vect_update_ivs_after_vectorizer: phi: .MEM_48 = PHI <.MEM_32(4), .MEM_47(19)>
+main.c:92:13: note: reduc or virtual phi. skip.
+main.c:92:13: note: vect_update_ivs_after_vectorizer: phi: i_49 = PHI <i_33(4), 0(19)>
+main.c:92:13: note: ------>vectorizing phi: .MEM_48 = PHI <.MEM_32(4), .MEM_47(26)>
+main.c:92:13: note: ------>vectorizing phi: i_49 = PHI <i_33(4), 0(26)>
+main.c:92:13: note: ------>vectorizing statement: _13 = *_12[i_49];
+main.c:92:13: note: transform statement.
+main.c:92:13: note: transform load. ncopies = 1
+main.c:92:13: note: create vector_type-pointer variable to type: vector(4) float  vectorizing an array ref: *_12
+main.c:92:13: note: created vectp.200_86
+main.c:92:13: note: add new stmt: vect__13.201_89 = MEM[(float *)vectp.199_87];
+main.c:92:13: note: ------>vectorizing statement: _17 = *_16[k_50];
+main.c:92:13: note: transform statement.
+main.c:92:13: note: transform load. ncopies = 1
+main.c:92:13: note: create vector_type-pointer variable to type: vector(4) float  vectorizing an array ref: *_16
+main.c:92:13: note: created vectp.203_90
+main.c:92:13: note: add new stmt: vect__17.204_95 = MEM[(float *)vectp.202_93];
+main.c:92:13: note: hoisting out of the vectorized loop: _17 = *_16[k_50];
+main.c:92:13: note: created new init_stmt: vect_cst__97 = {_96, _96, _96, _96};
+main.c:92:13: note: ------>vectorizing statement: _31 = _13 * _17;
+main.c:92:13: note: transform statement.
+main.c:92:13: note: vect_is_simple_use: operand _13
+main.c:92:13: note: def_stmt: _13 = *_12[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: vect_is_simple_use: operand _17
+main.c:92:13: note: def_stmt: _17 = *_16[k_50];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: transform binary/unary operation.
+main.c:92:13: note: vect_get_vec_def_for_operand: _13
+main.c:92:13: note: vect_is_simple_use: operand _13
+main.c:92:13: note: def_stmt: _13 = *_12[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note:   def_stmt =  _13 = *_12[i_49];
+main.c:92:13: note: vect_get_vec_def_for_operand: _17
+main.c:92:13: note: vect_is_simple_use: operand _17
+main.c:92:13: note: def_stmt: _17 = *_16[k_50];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note:   def_stmt =  _17 = *_16[k_50];
+main.c:92:13: note: add new stmt: vect__31.205_98 = vect__13.201_89 * vect_cst__97;
+main.c:92:13: note: ------>vectorizing statement: _19 = *_18[i_49];
+main.c:92:13: note: transform statement.
+main.c:92:13: note: transform load. ncopies = 1
+main.c:92:13: note: create vector_type-pointer variable to type: vector(4) float  vectorizing an array ref: *_18
+main.c:92:13: note: created vectp.207_99
+main.c:92:13: note: add new stmt: vect__19.208_102 = MEM[(float *)vectp.206_100];
+main.c:92:13: note: ------>vectorizing statement: _20 = _19 + _31;
+main.c:92:13: note: transform statement.
+main.c:92:13: note: vect_is_simple_use: operand _19
+main.c:92:13: note: def_stmt: _19 = *_18[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: vect_is_simple_use: operand _31
+main.c:92:13: note: def_stmt: _31 = _13 * _17;
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: transform binary/unary operation.
+main.c:92:13: note: vect_get_vec_def_for_operand: _19
+main.c:92:13: note: vect_is_simple_use: operand _19
+main.c:92:13: note: def_stmt: _19 = *_18[i_49];
+main.c:92:13: note: type of def: internal
+main.c:92:13: note:   def_stmt =  _19 = *_18[i_49];
+main.c:92:13: note: vect_get_vec_def_for_operand: _31
+main.c:92:13: note: vect_is_simple_use: operand _31
+main.c:92:13: note: def_stmt: _31 = _13 * _17;
+main.c:92:13: note: type of def: internal
+main.c:92:13: note:   def_stmt =  _31 = _13 * _17;
+main.c:92:13: note: add new stmt: vect__20.209_103 = vect__19.208_102 + vect__31.205_98;
+main.c:92:13: note: ------>vectorizing statement: *_18[i_49] = _20;
+main.c:92:13: note: transform statement.
+main.c:92:13: note: vect_is_simple_use: operand _20
+main.c:92:13: note: def_stmt: _20 = _19 + _31;
+main.c:92:13: note: type of def: internal
+main.c:92:13: note: transform store. ncopies = 1
+main.c:92:13: note: vect_get_vec_def_for_operand: _20
+main.c:92:13: note: vect_is_simple_use: operand _20
+main.c:92:13: note: def_stmt: _20 = _19 + _31;
+main.c:92:13: note: type of def: internal
+main.c:92:13: note:   def_stmt =  _20 = _19 + _31;
+main.c:92:13: note: create vector_type-pointer variable to type: vector(4) float  vectorizing an array ref: *_18
+main.c:92:13: note: created vectp.211_104
+main.c:92:13: note: add new stmt: MEM[(float *)vectp.210_105] = vect__20.209_103;
+main.c:92:13: note: ------>vectorizing statement: i_33 = i_49 + 1;
+main.c:92:13: note: ------>vectorizing statement: vectp.199_88 = vectp.199_87 + 16;
+main.c:92:13: note: ------>vectorizing statement: vectp.202_94 = vectp.202_93 + 0;
+main.c:92:13: note: ------>vectorizing statement: vectp.206_101 = vectp.206_100 + 16;
+main.c:92:13: note: ------>vectorizing statement: vectp.210_106 = vectp.210_105 + 16;
+main.c:92:13: note: ------>vectorizing statement: if (size_1(D) > i_33)
+
+loop at main.c:93: if (ivtmp_109 < bnd.196_83)
+main.c:92:13: note: LOOP VECTORIZED
+
+main.c:83:6: note: vectorized 1 loops in function.
+main.c:83:6: note: ===vect_slp_analyze_bb===
+main.c:85:5: note: === vect_analyze_data_refs ===
+main.c:85:5: note: not vectorized: not enough data-refs in basic block.
+main.c:90:5: note: === vect_analyze_data_refs ===
+main.c:90:5: note: not vectorized: not enough data-refs in basic block.
+main.c:90:5: note: ===vect_slp_analyze_bb===
+main.c:90:5: note: === vect_analyze_data_refs ===
+main.c:90:5: note: not vectorized: not enough data-refs in basic block.
+main.c:90:5: note: ===vect_slp_analyze_bb===
+main.c:90:5: note: ===vect_slp_analyze_bb===
+main.c:90:5: note: === vect_analyze_data_refs ===
+main.c:90:5: note: not vectorized: not enough data-refs in basic block.
+main.c:90:5: note: ===vect_slp_analyze_bb===
+main.c:90:5: note: ===vect_slp_analyze_bb===
+main.c:92:13: note: === vect_analyze_data_refs ===
+main.c:92:13: note: got vectype for stmt: _2 = *_12[i_64];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: _73 = *_16[k_50];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: _75 = *_18[i_64];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: *_18[i_64] = _76;
+vector(4) float
+main.c:92:13: note: === vect_analyze_data_ref_accesses ===
+main.c:92:13: note: not consecutive access _73 = *_16[k_50];
+main.c:92:13: note: not vectorized: no grouped stores in basic block.
+main.c:92:13: note: ===vect_slp_analyze_bb===
+main.c:92:13: note: ===vect_slp_analyze_bb===
+main.c:92:13: note: ===vect_slp_analyze_bb===
+main.c:92:13: note: === vect_analyze_data_refs ===
+main.c:92:13: note: got vectype for stmt: _10 = *_12[i_14];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: _4 = *_16[k_50];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: _71 = *_18[i_14];
+vector(4) float
+main.c:92:13: note: got vectype for stmt: *_18[i_14] = _70;
+vector(4) float
+main.c:92:13: note: === vect_analyze_data_ref_accesses ===
+main.c:92:13: note: not consecutive access _4 = *_16[k_50];
+main.c:92:13: note: not vectorized: no grouped stores in basic block.
+main.c:92:13: note: ===vect_slp_analyze_bb===
+main.c:92:13: note: ===vect_slp_analyze_bb===
+main.c:92:13: note: === vect_analyze_data_refs ===
+main.c:92:13: note: not vectorized: not enough data-refs in basic block.
+main.c:92:13: note: ===vect_slp_analyze_bb===
+main.c:92:13: note: === vect_analyze_data_refs ===
+main.c:92:13: note: got vectype for stmt: _96 = *_16[k_50];
+vector(4) float
+main.c:92:13: note: not vectorized: not enough data-refs in basic block.
+main.c:92:13: note: ===vect_slp_analyze_bb===
+main.c:93:25: note: === vect_analyze_data_refs ===
+main.c:93:25: note: not vectorized: no vectype for stmt: vect__13.201_89 = MEM[(float *)vectp.199_87];
+ scalar_type: vector(4) float
+main.c:93:25: note: not vectorized: no vectype for stmt: vect__19.208_102 = MEM[(float *)vectp.206_100];
+ scalar_type: vector(4) float
+main.c:93:25: note: not vectorized: no vectype for stmt: MEM[(float *)vectp.210_105] = vect__20.209_103;
+ scalar_type: vector(4) float
+main.c:93:25: note: === vect_analyze_data_ref_accesses ===
+main.c:93:25: note: not vectorized: no grouped stores in basic block.
+main.c:93:25: note: ===vect_slp_analyze_bb===
+main.c:93:25: note: ===vect_slp_analyze_bb===
+main.c:91:9: note: === vect_analyze_data_refs ===
+main.c:91:9: note: not vectorized: not enough data-refs in basic block.
+main.c:91:9: note: ===vect_slp_analyze_bb===
+main.c:91:9: note: ===vect_slp_analyze_bb===
+main.c:93:29: note: === vect_analyze_data_refs ===
+main.c:93:29: note: not vectorized: not enough data-refs in basic block.
+main.c:93:29: note: ===vect_slp_analyze_bb===
+main.c:90:5: note: === vect_analyze_data_refs ===
+main.c:90:5: note: not vectorized: not enough data-refs in basic block.
+main.c:90:5: note: ===vect_slp_analyze_bb===
+main.c:90:5: note: ===vect_slp_analyze_bb===
+main.c:93:25: note: === vect_analyze_data_refs ===
+main.c:93:25: note: not vectorized: not enough data-refs in basic block.
+main.c:93:25: note: ===vect_slp_analyze_bb===
+main.c:99:1: note: === vect_analyze_data_refs ===
+main.c:99:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:112
+main.c:112:5: note: ===== analyze_loop_nest =====
+main.c:112:5: note: === vect_analyze_loop_form ===
+main.c:112:5: note: not vectorized: multiple nested loops.
+main.c:112:5: note: bad loop form.
+
+Analyzing loop at main.c:113
+main.c:113:9: note: ===== analyze_loop_nest =====
+main.c:113:9: note: === vect_analyze_loop_form ===
+main.c:113:9: note: not vectorized: multiple nested loops.
+main.c:113:9: note: bad loop form.
+
+Analyzing loop at main.c:114
+main.c:114:13: note: ===== analyze_loop_nest =====
+main.c:114:13: note: === vect_analyze_loop_form ===
+main.c:114:13: note: not vectorized: multiple nested loops.
+main.c:114:13: note: bad loop form.
+
+Analyzing loop at main.c:115
+main.c:115:21: note: ===== analyze_loop_nest =====
+main.c:115:21: note: === vect_analyze_loop_form ===
+main.c:115:21: note: not vectorized: control flow in loop.
+main.c:115:21: note: bad loop form.
+
+Analyzing loop at main.c:116
+main.c:116:17: note: ===== analyze_loop_nest =====
+main.c:116:17: note: === vect_analyze_loop_form ===
+main.c:116:17: note: === get_loop_niters ===
+main.c:116:17: note: Symbolic number of iterations is bk_64 + 80 < bk_64 + 1 ? 1 : 80
+main.c:116:17: note: === vect_analyze_data_refs ===
+main.c:116:17: note: got vectype for stmt: _15 = *_14[k_60];
+vector(4) float
+main.c:116:17: note: got vectype for stmt: _19 = *_18[k_60];
+vector(4) float
+main.c:116:17: note: got vectype for stmt: *_20[j_61] = _22;
+vector(4) float
+main.c:116:17: note: === vect_analyze_scalar_cycles ===
+main.c:116:17: note: Analyze phi: .MEM_58 = PHI <.MEM_38(6), .MEM_57(4)>
+main.c:116:17: note: Analyze phi: k_60 = PHI <k_39(6), bk_64(4)>
+main.c:116:17: note: Access function of PHI: {bk_64, +, 1}_5
+main.c:116:17: note: step: 1,  init: bk_64
+main.c:116:17: note: Detected induction.
+main.c:116:17: note: Analyze phi: prephitmp_9 = PHI <_22(6), pretmp_25(4)>
+main.c:116:17: note: Access function of PHI: {pretmp_25, +, _37}_5
+main.c:116:17: note: step: _37,  init: pretmp_25
+main.c:116:17: note: step unknown.
+main.c:116:17: note: Analyze phi: prephitmp_9 = PHI <_22(6), pretmp_25(4)>
+main.c:116:17: note: reduction used in loop.
+main.c:116:17: note: Unknown def-use cycle pattern.
+main.c:116:17: note: === vect_pattern_recog ===
+main.c:116:17: note: vect_is_simple_use: operand _15
+main.c:116:17: note: def_stmt: _15 = *_14[k_60];
+main.c:116:17: note: type of def: internal
+main.c:116:17: note: === vect_analyze_data_ref_accesses ===
+main.c:116:17: note: not vectorized: complicated access pattern.
+main.c:116:17: note: bad data access.
+main.c:102:6: note: vectorized 0 loops in function.
+main.c:102:6: note: ===vect_slp_analyze_bb===
+main.c:105:5: note: === vect_analyze_data_refs ===
+main.c:105:5: note: not vectorized: not enough data-refs in basic block.
+main.c:112:5: note: === vect_analyze_data_refs ===
+main.c:112:5: note: not vectorized: not enough data-refs in basic block.
+main.c:112:5: note: ===vect_slp_analyze_bb===
+main.c:112:5: note: === vect_analyze_data_refs ===
+main.c:112:5: note: not vectorized: not enough data-refs in basic block.
+main.c:112:5: note: ===vect_slp_analyze_bb===
+main.c:117:47: note: === vect_analyze_data_refs ===
+main.c:117:47: note: got vectype for stmt: pretmp_25 = *_20[j_61];
+vector(4) float
+main.c:117:47: note: not vectorized: not enough data-refs in basic block.
+main.c:117:47: note: ===vect_slp_analyze_bb===
+main.c:116:17: note: === vect_analyze_data_refs ===
+main.c:116:17: note: got vectype for stmt: _15 = *_14[k_60];
+vector(4) float
+main.c:116:17: note: got vectype for stmt: _19 = *_18[k_60];
+vector(4) float
+main.c:116:17: note: got vectype for stmt: *_20[j_61] = _22;
+vector(4) float
+main.c:116:17: note: === vect_analyze_data_ref_accesses ===
+main.c:116:17: note: not consecutive access *_20[j_61] = _22;
+main.c:116:17: note: not vectorized: no grouped stores in basic block.
+main.c:116:17: note: ===vect_slp_analyze_bb===
+main.c:116:17: note: ===vect_slp_analyze_bb===
+main.c:115:21: note: === vect_analyze_data_refs ===
+main.c:115:21: note: not vectorized: not enough data-refs in basic block.
+main.c:115:21: note: ===vect_slp_analyze_bb===
+main.c:115:21: note: ===vect_slp_analyze_bb===
+main.c:116:17: note: === vect_analyze_data_refs ===
+main.c:116:17: note: not vectorized: not enough data-refs in basic block.
+main.c:116:17: note: ===vect_slp_analyze_bb===
+main.c:114:13: note: === vect_analyze_data_refs ===
+main.c:114:13: note: not vectorized: not enough data-refs in basic block.
+main.c:114:13: note: ===vect_slp_analyze_bb===
+main.c:114:13: note: ===vect_slp_analyze_bb===
+main.c:115:21: note: === vect_analyze_data_refs ===
+main.c:115:21: note: not vectorized: not enough data-refs in basic block.
+main.c:115:21: note: ===vect_slp_analyze_bb===
+main.c:117:33: note: === vect_analyze_data_refs ===
+main.c:117:33: note: not vectorized: not enough data-refs in basic block.
+main.c:117:33: note: ===vect_slp_analyze_bb===
+main.c:113:9: note: === vect_analyze_data_refs ===
+main.c:113:9: note: not vectorized: not enough data-refs in basic block.
+main.c:113:9: note: ===vect_slp_analyze_bb===
+main.c:113:9: note: ===vect_slp_analyze_bb===
+main.c:113:9: note: === vect_analyze_data_refs ===
+main.c:113:9: note: not vectorized: not enough data-refs in basic block.
+main.c:113:9: note: ===vect_slp_analyze_bb===
+main.c:112:5: note: === vect_analyze_data_refs ===
+main.c:112:5: note: not vectorized: not enough data-refs in basic block.
+main.c:112:5: note: ===vect_slp_analyze_bb===
+main.c:112:5: note: ===vect_slp_analyze_bb===
+main.c:112:5: note: === vect_analyze_data_refs ===
+main.c:112:5: note: not vectorized: not enough data-refs in basic block.
+main.c:112:5: note: ===vect_slp_analyze_bb===
+main.c:123:1: note: === vect_analyze_data_refs ===
+main.c:123:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:138
+main.c:138:5: note: ===== analyze_loop_nest =====
+main.c:138:5: note: === vect_analyze_loop_form ===
+main.c:138:5: note: not vectorized: multiple nested loops.
+main.c:138:5: note: bad loop form.
+
+Analyzing loop at main.c:139
+main.c:139:9: note: ===== analyze_loop_nest =====
+main.c:139:9: note: === vect_analyze_loop_form ===
+main.c:139:9: note: not vectorized: multiple nested loops.
+main.c:139:9: note: bad loop form.
+
+Analyzing loop at main.c:140
+main.c:140:13: note: ===== analyze_loop_nest =====
+main.c:140:13: note: === vect_analyze_loop_form ===
+main.c:140:13: note: not vectorized: multiple nested loops.
+main.c:140:13: note: bad loop form.
+
+Analyzing loop at main.c:141
+main.c:141:17: note: ===== analyze_loop_nest =====
+main.c:141:17: note: === vect_analyze_loop_form ===
+main.c:141:17: note: not vectorized: control flow in loop.
+main.c:141:17: note: bad loop form.
+
+Analyzing loop at main.c:143
+main.c:143:21: note: ===== analyze_loop_nest =====
+main.c:143:21: note: === vect_analyze_loop_form ===
+main.c:143:21: note: === get_loop_niters ===
+main.c:143:21: note: Symbolic number of iterations is bk_67 + 80 < bk_67 + 1 ? 1 : 80
+main.c:143:21: note: === vect_analyze_data_refs ===
+main.c:143:21: note: got vectype for stmt: _16 = *_15[k_61];
+vector(4) float
+main.c:143:21: note: got vectype for stmt: _20 = *_19[k_61];
+vector(4) float
+main.c:143:21: note: === vect_analyze_scalar_cycles ===
+main.c:143:21: note: Analyze phi: k_61 = PHI <k_43(6), bk_67(4)>
+main.c:143:21: note: Access function of PHI: {bk_67, +, 1}_5
+main.c:143:21: note: step: 1,  init: bk_67
+main.c:143:21: note: Detected induction.
+main.c:143:21: note: Analyze phi: tmp_62 = PHI <tmp_42(6), 0.0(4)>
+main.c:143:21: note: Access function of PHI: {0.0, +, _41}_5
+main.c:143:21: note: step: _41,  init: 0.0
+main.c:143:21: note: step unknown.
+main.c:143:21: note: Analyze phi: tmp_62 = PHI <tmp_42(6), 0.0(4)>
+main.c:143:21: note: reduction: unsafe fp math optimization: tmp_42 = _41 + tmp_62;
+main.c:143:21: note: Unknown def-use cycle pattern.
+main.c:143:21: note: === vect_pattern_recog ===
+main.c:143:21: note: vect_is_simple_use: operand _16
+main.c:143:21: note: def_stmt: _16 = *_15[k_61];
+main.c:143:21: note: type of def: internal
+main.c:143:21: note: === vect_analyze_data_ref_accesses ===
+main.c:143:21: note: === vect_mark_stmts_to_be_vectorized ===
+main.c:143:21: note: init: phi relevant? k_61 = PHI <k_43(6), bk_67(4)>
+main.c:143:21: note: init: phi relevant? tmp_62 = PHI <tmp_42(6), 0.0(4)>
+main.c:143:21: note: init: stmt relevant? _16 = *_15[k_61];
+main.c:143:21: note: init: stmt relevant? _20 = *_19[k_61];
+main.c:143:21: note: init: stmt relevant? _41 = _16 * _20;
+main.c:143:21: note: init: stmt relevant? tmp_42 = _41 + tmp_62;
+main.c:143:21: note: vec_stmt_relevant_p: used out of loop.
+main.c:143:21: note: vect_is_simple_use: operand _41
+main.c:143:21: note: def_stmt: _41 = _16 * _20;
+main.c:143:21: note: type of def: internal
+main.c:143:21: note: vec_stmt_relevant_p: stmt live but not relevant.
+main.c:143:21: note: mark relevant 1, live 1: tmp_42 = _41 + tmp_62;
+main.c:143:21: note: init: stmt relevant? k_43 = k_61 + 1;
+main.c:143:21: note: init: stmt relevant? if (_9 > k_43)
+main.c:143:21: note: worklist: examine stmt: tmp_42 = _41 + tmp_62;
+main.c:143:21: note: vect_is_simple_use: operand _41
+main.c:143:21: note: def_stmt: _41 = _16 * _20;
+main.c:143:21: note: type of def: internal
+main.c:143:21: note: mark relevant 1, live 0: _41 = _16 * _20;
+main.c:143:21: note: vect_is_simple_use: operand tmp_62
+main.c:143:21: note: def_stmt: tmp_62 = PHI <tmp_42(6), 0.0(4)>
+main.c:143:21: note: type of def: unknown
+main.c:143:21: note: Unsupported pattern.
+main.c:143:21: note: not vectorized: unsupported use in stmt.
+main.c:143:21: note: unexpected pattern.
+main.c:125:6: note: vectorized 0 loops in function.
+main.c:125:6: note: ===vect_slp_analyze_bb===
+main.c:131:5: note: === vect_analyze_data_refs ===
+main.c:131:5: note: not vectorized: not enough data-refs in basic block.
+main.c:138:5: note: === vect_analyze_data_refs ===
+main.c:138:5: note: not vectorized: not enough data-refs in basic block.
+main.c:138:5: note: ===vect_slp_analyze_bb===
+main.c:138:5: note: === vect_analyze_data_refs ===
+main.c:138:5: note: not vectorized: not enough data-refs in basic block.
+main.c:138:5: note: ===vect_slp_analyze_bb===
+main.c:144:43: note: === vect_analyze_data_refs ===
+main.c:144:43: note: not vectorized: not enough data-refs in basic block.
+main.c:144:43: note: ===vect_slp_analyze_bb===
+main.c:143:21: note: === vect_analyze_data_refs ===
+main.c:143:21: note: got vectype for stmt: _16 = *_15[k_61];
+vector(4) float
+main.c:143:21: note: got vectype for stmt: _20 = *_19[k_61];
+vector(4) float
+main.c:143:21: note: === vect_analyze_data_ref_accesses ===
+main.c:143:21: note: not vectorized: no grouped stores in basic block.
+main.c:143:21: note: ===vect_slp_analyze_bb===
+main.c:143:21: note: ===vect_slp_analyze_bb===
+main.c:143:21: note: ===vect_slp_analyze_bb===
+main.c:141:17: note: === vect_analyze_data_refs ===
+main.c:141:17: note: got vectype for stmt: _25 = *_24[j_64];
+vector(4) float
+main.c:141:17: note: got vectype for stmt: *_24[j_64] = _26;
+vector(4) float
+main.c:141:17: note: === vect_analyze_data_ref_accesses ===
+main.c:141:17: note: not vectorized: no grouped stores in basic block.
+main.c:141:17: note: ===vect_slp_analyze_bb===
+main.c:141:17: note: ===vect_slp_analyze_bb===
+main.c:143:21: note: === vect_analyze_data_refs ===
+main.c:143:21: note: not vectorized: not enough data-refs in basic block.
+main.c:143:21: note: ===vect_slp_analyze_bb===
+main.c:140:13: note: === vect_analyze_data_refs ===
+main.c:140:13: note: not vectorized: not enough data-refs in basic block.
+main.c:140:13: note: ===vect_slp_analyze_bb===
+main.c:140:13: note: ===vect_slp_analyze_bb===
+main.c:141:17: note: === vect_analyze_data_refs ===
+main.c:141:17: note: not vectorized: not enough data-refs in basic block.
+main.c:141:17: note: ===vect_slp_analyze_bb===
+main.c:146:29: note: === vect_analyze_data_refs ===
+main.c:146:29: note: not vectorized: not enough data-refs in basic block.
+main.c:146:29: note: ===vect_slp_analyze_bb===
+main.c:139:9: note: === vect_analyze_data_refs ===
+main.c:139:9: note: not vectorized: not enough data-refs in basic block.
+main.c:139:9: note: ===vect_slp_analyze_bb===
+main.c:139:9: note: ===vect_slp_analyze_bb===
+main.c:139:9: note: === vect_analyze_data_refs ===
+main.c:139:9: note: not vectorized: not enough data-refs in basic block.
+main.c:139:9: note: ===vect_slp_analyze_bb===
+main.c:138:5: note: === vect_analyze_data_refs ===
+main.c:138:5: note: not vectorized: not enough data-refs in basic block.
+main.c:138:5: note: ===vect_slp_analyze_bb===
+main.c:138:5: note: ===vect_slp_analyze_bb===
+main.c:138:5: note: === vect_analyze_data_refs ===
+main.c:138:5: note: not vectorized: not enough data-refs in basic block.
+main.c:138:5: note: ===vect_slp_analyze_bb===
+main.c:151:1: note: === vect_analyze_data_refs ===
+main.c:151:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:170
+main.c:170:17: note: ===== analyze_loop_nest =====
+main.c:170:17: note: === vect_analyze_loop_form ===
+main.c:170:17: note: not vectorized: multiple nested loops.
+main.c:170:17: note: bad loop form.
+
+Analyzing loop at main.c:170
+main.c:170:17: note: ===== analyze_loop_nest =====
+main.c:170:17: note: === vect_analyze_loop_form ===
+main.c:170:17: note: not vectorized: control flow in loop.
+main.c:170:17: note: bad loop form.
+
+Analyzing loop at main.c:172
+main.c:172:21: note: ===== analyze_loop_nest =====
+main.c:172:21: note: === vect_analyze_loop_form ===
+main.c:172:21: note: === get_loop_niters ===
+main.c:172:21: note: Symbolic number of iterations is (size_t) _68 - bk_16
+main.c:172:21: note: === vect_analyze_data_refs ===
+main.c:172:21: note: got vectype for stmt: _46 = *_45[k_60];
+vector(4) float
+main.c:172:21: note: got vectype for stmt: _50 = *_49[k_60];
+vector(4) float
+main.c:172:21: note: === vect_analyze_scalar_cycles ===
+main.c:172:21: note: Analyze phi: tmp_62 = PHI <tmp_52(17), 0.0(14)>
+main.c:172:21: note: Access function of PHI: {0.0, +, _51}_3
+main.c:172:21: note: step: _51,  init: 0.0
+main.c:172:21: note: step unknown.
+main.c:172:21: note: Analyze phi: k_60 = PHI <k_53(17), bk_16(14)>
+main.c:172:21: note: Access function of PHI: {bk_16, +, 1}_3
+main.c:172:21: note: step: 1,  init: bk_16
+main.c:172:21: note: Detected induction.
+main.c:172:21: note: Analyze phi: tmp_62 = PHI <tmp_52(17), 0.0(14)>
+main.c:172:21: note: reduction: unsafe fp math optimization: tmp_52 = _51 + tmp_62;
+main.c:172:21: note: Unknown def-use cycle pattern.
+main.c:172:21: note: === vect_pattern_recog ===
+main.c:172:21: note: vect_is_simple_use: operand _46
+main.c:172:21: note: def_stmt: _46 = *_45[k_60];
+main.c:172:21: note: type of def: internal
+main.c:172:21: note: === vect_analyze_data_ref_accesses ===
+main.c:172:21: note: === vect_mark_stmts_to_be_vectorized ===
+main.c:172:21: note: init: phi relevant? tmp_62 = PHI <tmp_52(17), 0.0(14)>
+main.c:172:21: note: init: phi relevant? k_60 = PHI <k_53(17), bk_16(14)>
+main.c:172:21: note: init: stmt relevant? _46 = *_45[k_60];
+main.c:172:21: note: init: stmt relevant? _50 = *_49[k_60];
+main.c:172:21: note: init: stmt relevant? _51 = _46 * _50;
+main.c:172:21: note: init: stmt relevant? tmp_52 = _51 + tmp_62;
+main.c:172:21: note: vec_stmt_relevant_p: used out of loop.
+main.c:172:21: note: vect_is_simple_use: operand _51
+main.c:172:21: note: def_stmt: _51 = _46 * _50;
+main.c:172:21: note: type of def: internal
+main.c:172:21: note: vec_stmt_relevant_p: stmt live but not relevant.
+main.c:172:21: note: mark relevant 1, live 1: tmp_52 = _51 + tmp_62;
+main.c:172:21: note: init: stmt relevant? k_53 = k_60 + 1;
+main.c:172:21: note: init: stmt relevant? if (k_53 < _68)
+main.c:172:21: note: worklist: examine stmt: tmp_52 = _51 + tmp_62;
+main.c:172:21: note: vect_is_simple_use: operand _51
+main.c:172:21: note: def_stmt: _51 = _46 * _50;
+main.c:172:21: note: type of def: internal
+main.c:172:21: note: mark relevant 1, live 0: _51 = _46 * _50;
+main.c:172:21: note: vect_is_simple_use: operand tmp_62
+main.c:172:21: note: def_stmt: tmp_62 = PHI <tmp_52(17), 0.0(14)>
+main.c:172:21: note: type of def: unknown
+main.c:172:21: note: Unsupported pattern.
+main.c:172:21: note: not vectorized: unsupported use in stmt.
+main.c:172:21: note: unexpected pattern.
+main.c:168:9: note: vectorized 0 loops in function.
+main.c:168:9: note: ===vect_slp_analyze_bb===
+main.c:168:9: note: === vect_analyze_data_refs ===
+main.c:168:9: note: got vectype for stmt: size_21 = *.omp_data_i_11(D).size;
+vector(2) long unsigned int
+main.c:168:9: note: not vectorized: not enough data-refs in basic block.
+main.c:168:9: note: ===vect_slp_analyze_bb===
+main.c:168:9: note: === vect_analyze_data_refs ===
+main.c:168:9: note: not vectorized: not enough data-refs in basic block.
+main.c:168:9: note: ===vect_slp_analyze_bb===
+main.c:168:9: note: === vect_analyze_data_refs ===
+main.c:168:9: note: not vectorized: not enough data-refs in basic block.
+main.c:168:9: note: ===vect_slp_analyze_bb===
+main.c:168:9: note: === vect_analyze_data_refs ===
+main.c:168:9: note: not vectorized: not enough data-refs in basic block.
+main.c:168:9: note: ===vect_slp_analyze_bb===
+main.c:168:9: note: === vect_analyze_data_refs ===
+main.c:168:9: note: got vectype for stmt: size.46_12 = *.omp_data_i_11(D).size.46;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: size.44_13 = *.omp_data_i_11(D).size.44;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: size.42_14 = *.omp_data_i_11(D).size.42;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: bj_15 = *.omp_data_i_11(D).bj;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: bk_16 = *.omp_data_i_11(D).bk;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: c_block_size_17 = *.omp_data_i_11(D).c_block_size;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: c_18 = *.omp_data_i_11(D).c;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: b_19 = *.omp_data_i_11(D).b;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: a_20 = *.omp_data_i_11(D).a;
+vector(2) long unsigned int
+main.c:168:9: note: === vect_analyze_data_ref_accesses ===
+main.c:168:9: note: Detected interleaving load *.omp_data_i_11(D).a and *.omp_data_i_11(D).b
+main.c:168:9: note: Detected interleaving load *.omp_data_i_11(D).a and *.omp_data_i_11(D).c
+main.c:168:9: note: Detected interleaving load *.omp_data_i_11(D).c_block_size and *.omp_data_i_11(D).bk
+main.c:168:9: note: Detected interleaving load *.omp_data_i_11(D).c_block_size and *.omp_data_i_11(D).bj
+main.c:168:9: note: Detected interleaving load *.omp_data_i_11(D).c_block_size and *.omp_data_i_11(D).size.42
+main.c:168:9: note: Detected interleaving load *.omp_data_i_11(D).c_block_size and *.omp_data_i_11(D).size.44
+main.c:168:9: note: Detected interleaving load *.omp_data_i_11(D).c_block_size and *.omp_data_i_11(D).size.46
+main.c:168:9: note: Detected interleaving load of size 3 starting with a_20 = *.omp_data_i_11(D).a;
+main.c:168:9: note: Detected interleaving load of size 6 starting with c_block_size_17 = *.omp_data_i_11(D).c_block_size;
+main.c:168:9: note: not vectorized: no grouped stores in basic block.
+main.c:168:9: note: ===vect_slp_analyze_bb===
+main.c:170:17: note: === vect_analyze_data_refs ===
+main.c:170:17: note: not vectorized: not enough data-refs in basic block.
+main.c:170:17: note: ===vect_slp_analyze_bb===
+main.c:175:29: note: === vect_analyze_data_refs ===
+main.c:175:29: note: not vectorized: not enough data-refs in basic block.
+main.c:175:29: note: ===vect_slp_analyze_bb===
+main.c:172:21: note: === vect_analyze_data_refs ===
+main.c:172:21: note: not vectorized: not enough data-refs in basic block.
+main.c:172:21: note: ===vect_slp_analyze_bb===
+main.c:172:21: note: === vect_analyze_data_refs ===
+main.c:172:21: note: not vectorized: not enough data-refs in basic block.
+main.c:172:21: note: ===vect_slp_analyze_bb===
+main.c:172:21: note: ===vect_slp_analyze_bb===
+main.c:170:17: note: === vect_analyze_data_refs ===
+main.c:170:17: note: got vectype for stmt: _38 = *_37[j_54];
+vector(4) float
+main.c:170:17: note: got vectype for stmt: *_37[j_54] = _40;
+vector(4) float
+main.c:170:17: note: === vect_analyze_data_ref_accesses ===
+main.c:170:17: note: not vectorized: no grouped stores in basic block.
+main.c:170:17: note: ===vect_slp_analyze_bb===
+main.c:170:17: note: ===vect_slp_analyze_bb===
+main.c:173:43: note: === vect_analyze_data_refs ===
+main.c:173:43: note: not vectorized: not enough data-refs in basic block.
+main.c:173:43: note: ===vect_slp_analyze_bb===
+main.c:172:21: note: === vect_analyze_data_refs ===
+main.c:172:21: note: got vectype for stmt: _46 = *_45[k_60];
+vector(4) float
+main.c:172:21: note: got vectype for stmt: _50 = *_49[k_60];
+vector(4) float
+main.c:172:21: note: === vect_analyze_data_ref_accesses ===
+main.c:172:21: note: not vectorized: no grouped stores in basic block.
+main.c:172:21: note: ===vect_slp_analyze_bb===
+main.c:172:21: note: ===vect_slp_analyze_bb===
+main.c:172:21: note: ===vect_slp_analyze_bb===
+main.c:172:21: note: === vect_analyze_data_refs ===
+main.c:172:21: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:166
+main.c:166:5: note: ===== analyze_loop_nest =====
+main.c:166:5: note: === vect_analyze_loop_form ===
+main.c:166:5: note: === vect_analyze_loop_form ===
+main.c:166:5: note: === get_loop_niters ===
+main.c:166:5: note: not vectorized: Bad inner loop.
+main.c:166:5: note: bad loop form.
+
+Analyzing loop at main.c:167
+main.c:167:9: note: ===== analyze_loop_nest =====
+main.c:167:9: note: === vect_analyze_loop_form ===
+main.c:167:9: note: === get_loop_niters ===
+main.c:167:9: note: Symbolic number of iterations is (size_1(D) + 18446744073709551615) / 80 + 1
+main.c:167:9: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+main.c:153:6: note: vectorized 0 loops in function.
+main.c:153:6: note: ===vect_slp_analyze_bb===
+main.c:159:5: note: === vect_analyze_data_refs ===
+main.c:159:5: note: not vectorized: not enough data-refs in basic block.
+main.c:166:5: note: === vect_analyze_data_refs ===
+main.c:166:5: note: not vectorized: not enough data-refs in basic block.
+main.c:166:5: note: ===vect_slp_analyze_bb===
+main.c:166:5: note: ===vect_slp_analyze_bb===
+main.c:166:5: note: ===vect_slp_analyze_bb===
+main.c:168:9: note: === vect_analyze_data_refs ===
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.size.46 = size_1(D);
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.size.44 = size_1(D);
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.size.42 = size_1(D);
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.bj = bj_36;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.bk = bk_31;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.c_block_size = 80;
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.c = c_9(D);
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.b = b_11(D);
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.a = a_22(D);
+vector(2) long unsigned int
+main.c:168:9: note: got vectype for stmt: .omp_data_o.50.size = size_1(D);
+vector(2) long unsigned int
+main.c:168:9: note: === vect_analyze_data_ref_accesses ===
+main.c:168:9: note: Detected interleaving store .omp_data_o.50.a and .omp_data_o.50.b
+main.c:168:9: note: Detected interleaving store .omp_data_o.50.a and .omp_data_o.50.c
+main.c:168:9: note: Detected interleaving store .omp_data_o.50.c_block_size and .omp_data_o.50.bk
+main.c:168:9: note: Detected interleaving store .omp_data_o.50.c_block_size and .omp_data_o.50.bj
+main.c:168:9: note: Detected interleaving store .omp_data_o.50.c_block_size and .omp_data_o.50.size.42
+main.c:168:9: note: Detected interleaving store .omp_data_o.50.c_block_size and .omp_data_o.50.size.44
+main.c:168:9: note: Detected interleaving store .omp_data_o.50.c_block_size and .omp_data_o.50.size.46
+main.c:168:9: note: not consecutive access .omp_data_o.50.size = size_1(D);
+main.c:168:9: note: Detected interleaving store of size 3 starting with .omp_data_o.50.a = a_22(D);
+main.c:168:9: note: Detected interleaving store of size 6 starting with .omp_data_o.50.c_block_size = 80;
+main.c:168:9: note: === vect_pattern_recog ===
+main.c:168:9: note: === vect_analyze_slp ===
+main.c:168:9: note: Build SLP for .omp_data_o.50.a = a_22(D);
+main.c:168:9: note: Build SLP for .omp_data_o.50.b = b_11(D);
+main.c:168:9: note: Build SLP for .omp_data_o.50.c = c_9(D);
+main.c:168:9: note: vect_is_simple_use: operand a_22(D)
+main.c:168:9: note: vect_is_simple_use: operand b_11(D)
+main.c:168:9: note: vect_is_simple_use: operand c_9(D)
+main.c:168:9: note: Split group into 2 and 1
+main.c:168:9: note: Build SLP for .omp_data_o.50.a = a_22(D);
+main.c:168:9: note: Build SLP for .omp_data_o.50.b = b_11(D);
+main.c:168:9: note: vect_is_simple_use: operand a_22(D)
+main.c:168:9: note: vect_is_simple_use: operand b_11(D)
+main.c:168:9: note: Final SLP tree for instance:
+main.c:168:9: note: node
+main.c:168:9: note: 	stmt 0 .omp_data_o.50.a = a_22(D);
+main.c:168:9: note: 	stmt 1 .omp_data_o.50.b = b_11(D);
+main.c:168:9: note: Build SLP for .omp_data_o.50.c = c_9(D);
+main.c:168:9: note: Build SLP failed: unrolling required in basic block SLP
+main.c:168:9: note: Build SLP for .omp_data_o.50.c_block_size = 80;
+main.c:168:9: note: Build SLP for .omp_data_o.50.bk = bk_31;
+main.c:168:9: note: Build SLP failed: different operation in stmt .omp_data_o.50.bk = bk_31;
+main.c:168:9: note: original stmt .omp_data_o.50.c_block_size = 80;
+main.c:168:9: note: Build SLP for .omp_data_o.50.bj = bj_36;
+main.c:168:9: note: Build SLP failed: different operation in stmt .omp_data_o.50.bj = bj_36;
+main.c:168:9: note: original stmt .omp_data_o.50.c_block_size = 80;
+main.c:168:9: note: Build SLP for .omp_data_o.50.size.42 = size_1(D);
+main.c:168:9: note: Build SLP failed: different operation in stmt .omp_data_o.50.size.42 = size_1(D);
+main.c:168:9: note: original stmt .omp_data_o.50.c_block_size = 80;
+main.c:168:9: note: Build SLP for .omp_data_o.50.size.44 = size_1(D);
+main.c:168:9: note: Build SLP failed: different operation in stmt .omp_data_o.50.size.44 = size_1(D);
+main.c:168:9: note: original stmt .omp_data_o.50.c_block_size = 80;
+main.c:168:9: note: Build SLP for .omp_data_o.50.size.46 = size_1(D);
+main.c:168:9: note: Build SLP failed: different operation in stmt .omp_data_o.50.size.46 = size_1(D);
+main.c:168:9: note: original stmt .omp_data_o.50.c_block_size = 80;
+main.c:168:9: note: === vect_slp_analyze_and_verify_instance_alignment ===
+main.c:168:9: note: vect_compute_data_ref_alignment:
+main.c:168:9: note: misalign = 8 bytes of ref .omp_data_o.50.a
+main.c:168:9: note: Vectorizing an unaligned access.
+main.c:168:9: note: === vect_slp_analyze_instance_dependence ===
+main.c:168:9: note: === vect_slp_analyze_operations ===
+main.c:168:9: note: ==> examining statement: .omp_data_o.50.a = a_22(D);
+main.c:168:9: note: vect_is_simple_use: operand a_22(D)
+main.c:168:9: note: vect_is_simple_use: operand b_11(D)
+main.c:168:9: note: ==> examining statement: .omp_data_o.50.b = b_11(D);
+main.c:168:9: note: vect_is_simple_use: operand b_11(D)
+main.c:168:9: note: === vect_analyze_slp_cost ===
+main.c:168:9: note: vect_model_store_cost: unaligned supported by hardware.
+main.c:168:9: note: vect_model_store_cost: inside_cost = 2, prologue_cost = 0 .
+main.c:168:9: note: vect_is_simple_use: operand a_22(D)
+main.c:168:9: note: Cost model analysis: 
+  Vector inside of basic block cost: 2
+  Vector prologue cost: 1
+  Vector epilogue cost: 0
+  Scalar cost of basic block: 2
+main.c:168:9: note: not vectorized: vectorization is not profitable.
+main.c:167:9: note: === vect_analyze_data_refs ===
+main.c:167:9: note: not vectorized: not enough data-refs in basic block.
+main.c:167:9: note: ===vect_slp_analyze_bb===
+main.c:167:9: note: ===vect_slp_analyze_bb===
+main.c:166:5: note: === vect_analyze_data_refs ===
+main.c:166:5: note: not vectorized: not enough data-refs in basic block.
+main.c:166:5: note: ===vect_slp_analyze_bb===
+main.c:166:5: note: ===vect_slp_analyze_bb===
+main.c:180:1: note: === vect_analyze_data_refs ===
+main.c:180:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at main.c:204
+main.c:204:5: note: ===== analyze_loop_nest =====
+main.c:204:5: note: === vect_analyze_loop_form ===
+main.c:204:5: note: === get_loop_niters ===
+main.c:204:5: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+main.c:182:6: note: vectorized 0 loops in function.
+main.c:182:6: note: ===vect_slp_analyze_bb===
+main.c:188:5: note: === vect_analyze_data_refs ===
+main.c:188:5: note: got vectype for stmt: EVENTSET.53_1 = EVENTSET;
+vector(4) int
+main.c:188:5: note: not vectorized: not enough data-refs in basic block.
+main.c:190:5: note: === vect_analyze_data_refs ===
+main.c:190:5: note: got vectype for stmt: EVENTSET.54_2 = EVENTSET;
+vector(4) int
+main.c:190:5: note: not vectorized: not enough data-refs in basic block.
+main.c:203:11: note: ===vect_slp_analyze_bb===
+main.c:205:9: note: === vect_analyze_data_refs ===
+main.c:205:9: note: got vectype for stmt: _3 = EVENTS[i_36];
+vector(4) int
+main.c:205:9: note: not vectorized: not enough data-refs in basic block.
+main.c:206:9: note: === vect_analyze_data_refs ===
+main.c:206:9: note: got vectype for stmt: _4 = VALUES[i_36];
+vector(2) long long int
+main.c:206:9: note: not vectorized: not enough data-refs in basic block.
+main.c:204:5: note: === vect_analyze_data_refs ===
+main.c:204:5: note: not vectorized: not enough data-refs in basic block.
+main.c:204:5: note: ===vect_slp_analyze_bb===
+main.c:204:5: note: ===vect_slp_analyze_bb===
+/usr/include/bits/stdio.h:82:10: note: === vect_analyze_data_refs ===
+/usr/include/bits/stdio.h:82:10: note: got vectype for stmt: stdout.56_31 = stdout;
+vector(2) long unsigned int
+/usr/include/bits/stdio.h:82:10: note: not vectorized: not enough data-refs in basic block.
+main.c:211:5: note: === vect_analyze_data_refs ===
+main.c:211:5: note: got vectype for stmt: EVENTSET.55_5 = EVENTSET;
+vector(4) int
+main.c:211:5: note: not vectorized: not enough data-refs in basic block.
+main.c:214:1: note: === vect_analyze_data_refs ===
+main.c:214:1: note: not vectorized: not enough data-refs in basic block.
+main.c:214:1: note: ===vect_slp_analyze_bb===
+main.c:220:5: note: === vect_analyze_data_refs ===
+main.c:220:5: note: got vectype for stmt: EVENTSET.57_1 = EVENTSET;
+vector(4) int
+main.c:220:5: note: not vectorized: not enough data-refs in basic block.
+main.c:239:5: note: === vect_analyze_data_refs ===
+main.c:239:5: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at utils.c:12
+utils.c:12:5: note: ===== analyze_loop_nest =====
+utils.c:12:5: note: === vect_analyze_loop_form ===
+utils.c:12:5: note: === get_loop_niters ===
+utils.c:12:5: note: === vect_analyze_data_refs ===
+utils.c:12:5: note: got vectype for stmt: CLEAR_CACHE[i_11] = _1;
+vector(2) double
+utils.c:12:5: note: === vect_analyze_scalar_cycles ===
+utils.c:12:5: note: Analyze phi: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: Access function of PHI: {0, +, 1}_1
+utils.c:12:5: note: step: 1,  init: 0
+utils.c:12:5: note: Detected induction.
+utils.c:12:5: note: Analyze phi: .MEM_12 = PHI <.MEM_5(4), .MEM_4(D)(2)>
+utils.c:12:5: note: Analyze phi: ivtmp_2 = PHI <ivtmp_10(4), 90000000(2)>
+utils.c:12:5: note: Access function of PHI: {90000000, +, 18446744073709551615}_1
+utils.c:12:5: note: step: 18446744073709551615,  init: 90000000
+utils.c:12:5: note: Detected induction.
+utils.c:12:5: note: === vect_pattern_recog ===
+utils.c:12:5: note: === vect_analyze_data_ref_accesses ===
+utils.c:12:5: note: === vect_mark_stmts_to_be_vectorized ===
+utils.c:12:5: note: init: phi relevant? i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: init: phi relevant? .MEM_12 = PHI <.MEM_5(4), .MEM_4(D)(2)>
+utils.c:12:5: note: init: phi relevant? ivtmp_2 = PHI <ivtmp_10(4), 90000000(2)>
+utils.c:12:5: note: init: stmt relevant? _8 = (signed long) i_11;
+utils.c:12:5: note: init: stmt relevant? _1 = (double) _8;
+utils.c:12:5: note: init: stmt relevant? CLEAR_CACHE[i_11] = _1;
+utils.c:12:5: note: vec_stmt_relevant_p: stmt has vdefs.
+utils.c:12:5: note: mark relevant 5, live 0: CLEAR_CACHE[i_11] = _1;
+utils.c:12:5: note: init: stmt relevant? i_6 = i_11 + 1;
+utils.c:12:5: note: init: stmt relevant? ivtmp_10 = ivtmp_2 - 1;
+utils.c:12:5: note: init: stmt relevant? if (ivtmp_10 != 0)
+utils.c:12:5: note: worklist: examine stmt: CLEAR_CACHE[i_11] = _1;
+utils.c:12:5: note: vect_is_simple_use: operand _1
+utils.c:12:5: note: def_stmt: _1 = (double) _8;
+utils.c:12:5: note: type of def: internal
+utils.c:12:5: note: mark relevant 5, live 0: _1 = (double) _8;
+utils.c:12:5: note: worklist: examine stmt: _1 = (double) _8;
+utils.c:12:5: note: vect_is_simple_use: operand _8
+utils.c:12:5: note: def_stmt: _8 = (signed long) i_11;
+utils.c:12:5: note: type of def: internal
+utils.c:12:5: note: mark relevant 5, live 0: _8 = (signed long) i_11;
+utils.c:12:5: note: worklist: examine stmt: _8 = (signed long) i_11;
+utils.c:12:5: note: vect_is_simple_use: operand i_11
+utils.c:12:5: note: def_stmt: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: type of def: induction
+utils.c:12:5: note: mark relevant 5, live 0: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: worklist: examine stmt: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: vect_is_simple_use: operand i_6
+utils.c:12:5: note: def_stmt: i_6 = i_11 + 1;
+utils.c:12:5: note: type of def: internal
+utils.c:12:5: note: mark relevant 5, live 0: i_6 = i_11 + 1;
+utils.c:12:5: note: vect_is_simple_use: operand 0
+utils.c:12:5: note: worklist: examine stmt: i_6 = i_11 + 1;
+utils.c:12:5: note: vect_is_simple_use: operand i_11
+utils.c:12:5: note: def_stmt: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: type of def: induction
+utils.c:12:5: note: mark relevant 5, live 0: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: already marked relevant/live.
+utils.c:12:5: note: === vect_analyze_data_ref_dependences ===
+utils.c:12:5: note: === vect_determine_vectorization_factor ===
+utils.c:12:5: note: ==> examining phi: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: get vectype for scalar type:  size_t
+utils.c:12:5: note: vectype: vector(2) long unsigned int
+utils.c:12:5: note: nunits = 2
+utils.c:12:5: note: ==> examining phi: .MEM_12 = PHI <.MEM_5(4), .MEM_4(D)(2)>
+utils.c:12:5: note: ==> examining phi: ivtmp_2 = PHI <ivtmp_10(4), 90000000(2)>
+utils.c:12:5: note: ==> examining statement: _8 = (signed long) i_11;
+utils.c:12:5: note: get vectype for scalar type:  signed long
+utils.c:12:5: note: vectype: vector(2) signed long
+utils.c:12:5: note: get vectype for scalar type:  signed long
+utils.c:12:5: note: vectype: vector(2) signed long
+utils.c:12:5: note: nunits = 2
+utils.c:12:5: note: ==> examining statement: _1 = (double) _8;
+utils.c:12:5: note: get vectype for scalar type:  double
+utils.c:12:5: note: vectype: vector(2) double
+utils.c:12:5: note: get vectype for scalar type:  double
+utils.c:12:5: note: vectype: vector(2) double
+utils.c:12:5: note: nunits = 2
+utils.c:12:5: note: ==> examining statement: CLEAR_CACHE[i_11] = _1;
+utils.c:12:5: note: get vectype for scalar type:  double
+utils.c:12:5: note: vectype: vector(2) double
+utils.c:12:5: note: nunits = 2
+utils.c:12:5: note: ==> examining statement: i_6 = i_11 + 1;
+utils.c:12:5: note: get vectype for scalar type:  size_t
+utils.c:12:5: note: vectype: vector(2) long unsigned int
+utils.c:12:5: note: get vectype for scalar type:  size_t
+utils.c:12:5: note: vectype: vector(2) long unsigned int
+utils.c:12:5: note: nunits = 2
+utils.c:12:5: note: ==> examining statement: ivtmp_10 = ivtmp_2 - 1;
+utils.c:12:5: note: skip.
+utils.c:12:5: note: ==> examining statement: if (ivtmp_10 != 0)
+utils.c:12:5: note: skip.
+utils.c:12:5: note: vectorization factor = 2
+utils.c:12:5: note: === vect_analyze_slp ===
+utils.c:12:5: note: === vect_make_slp_decision ===
+utils.c:12:5: note: vectorization_factor = 2, niters = 90000000
+utils.c:12:5: note: === vect_analyze_data_refs_alignment ===
+utils.c:12:5: note: vect_compute_data_ref_alignment:
+utils.c:12:5: note: misalign = 0 bytes of ref CLEAR_CACHE[i_11]
+utils.c:12:5: note: === vect_prune_runtime_alias_test_list ===
+utils.c:12:5: note: === vect_enhance_data_refs_alignment ===
+utils.c:12:5: note: vect_can_advance_ivs_p:
+utils.c:12:5: note: Analyze phi: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: Analyze phi: .MEM_12 = PHI <.MEM_5(4), .MEM_4(D)(2)>
+utils.c:12:5: note: reduc or virtual phi. skip.
+utils.c:12:5: note: Analyze phi: ivtmp_2 = PHI <ivtmp_10(4), 90000000(2)>
+utils.c:12:5: note: vect_model_store_cost: aligned.
+utils.c:12:5: note: vect_get_data_access_cost: inside_cost = 1, outside_cost = 0.
+utils.c:12:5: note: === vect_analyze_loop_operations ===
+utils.c:12:5: note: examining phi: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: === vectorizable_induction ===
+utils.c:12:5: note: vect_model_induction_cost: inside_cost = 1, prologue_cost = 2 .
+utils.c:12:5: note: examining phi: .MEM_12 = PHI <.MEM_5(4), .MEM_4(D)(2)>
+utils.c:12:5: note: examining phi: ivtmp_2 = PHI <ivtmp_10(4), 90000000(2)>
+utils.c:12:5: note: ==> examining statement: _8 = (signed long) i_11;
+utils.c:12:5: note: vect_is_simple_use: operand i_11
+utils.c:12:5: note: def_stmt: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: type of def: induction
+utils.c:12:5: note: vect_is_simple_use: operand i_11
+utils.c:12:5: note: def_stmt: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: type of def: induction
+utils.c:12:5: note: no optab.
+utils.c:12:5: note: vect_is_simple_use: operand i_11
+utils.c:12:5: note: def_stmt: i_11 = PHI <i_6(4), 0(2)>
+utils.c:12:5: note: type of def: induction
+utils.c:12:5: note: === vectorizable_assignment ===
+utils.c:12:5: note: vect_model_simple_cost: inside_cost = 1, prologue_cost = 0 .
+utils.c:12:5: note: ==> examining statement: _1 = (double) _8;
+utils.c:12:5: note: vect_is_simple_use: operand _8
+utils.c:12:5: note: def_stmt: _8 = (signed long) i_11;
+utils.c:12:5: note: type of def: internal
+utils.c:12:5: note: conversion not supported by target.
+utils.c:12:5: note: vect_is_simple_use: operand _8
+utils.c:12:5: note: def_stmt: _8 = (signed long) i_11;
+utils.c:12:5: note: type of def: internal
+utils.c:12:5: note: no optab.
+utils.c:12:5: note: not vectorized: relevant stmt not supported: _1 = (double) _8;
+utils.c:12:5: note: bad operation or unsupported loop bound.
+utils.c:11:6: note: vectorized 0 loops in function.
+utils.c:11:6: note: ===vect_slp_analyze_bb===
+utils.c:11:6: note: ===vect_slp_analyze_bb===
+utils.c:12:5: note: === vect_analyze_data_refs ===
+utils.c:12:5: note: got vectype for stmt: CLEAR_CACHE[i_11] = _1;
+vector(2) double
+utils.c:12:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:12:5: note: ===vect_slp_analyze_bb===
+utils.c:12:5: note: ===vect_slp_analyze_bb===
+utils.c:15:1: note: === vect_analyze_data_refs ===
+utils.c:15:1: note: not vectorized: not enough data-refs in basic block.
+utils.c:15:1: note: ===vect_slp_analyze_bb===
+utils.c:25:1: note: === vect_analyze_data_refs ===
+utils.c:25:1: note: got vectype for stmt: _1 = t.tv_sec;
+vector(2) long int
+utils.c:25:1: note: got vectype for stmt: _3 = t.tv_usec;
+vector(2) long int
+utils.c:25:1: note: got vectype for stmt: start_time = _5;
+vector(2) long long unsigned int
+utils.c:25:1: note: === vect_analyze_data_ref_accesses ===
+utils.c:25:1: note: Detected interleaving load t.tv_sec and t.tv_usec
+utils.c:25:1: note: not consecutive access start_time = _5;
+utils.c:25:1: note: Detected interleaving load of size 2 starting with _1 = t.tv_sec;
+utils.c:25:1: note: not vectorized: no grouped stores in basic block.
+utils.c:25:1: note: ===vect_slp_analyze_bb===
+utils.c:31:23: note: === vect_analyze_data_refs ===
+utils.c:31:23: note: got vectype for stmt: _1 = t.tv_sec;
+vector(2) long int
+utils.c:31:23: note: got vectype for stmt: _3 = t.tv_usec;
+vector(2) long int
+utils.c:31:23: note: got vectype for stmt: start_time.0_5 = start_time;
+vector(2) long long unsigned int
+utils.c:31:23: note: === vect_analyze_data_ref_accesses ===
+utils.c:31:23: note: Detected interleaving load t.tv_sec and t.tv_usec
+utils.c:31:23: note: not consecutive access start_time.0_5 = start_time;
+utils.c:31:23: note: Detected interleaving load of size 2 starting with _1 = t.tv_sec;
+utils.c:31:23: note: not vectorized: no grouped stores in basic block.
+
+Analyzing loop at utils.c:39
+utils.c:39:5: note: ===== analyze_loop_nest =====
+utils.c:39:5: note: === vect_analyze_loop_form ===
+utils.c:39:5: note: === vect_analyze_loop_form ===
+utils.c:39:5: note: === get_loop_niters ===
+utils.c:39:5: note: Considering outer-loop vectorization.
+utils.c:39:5: note: === get_loop_niters ===
+utils.c:39:5: note: Symbolic number of iterations is size_1(D)
+utils.c:39:5: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+
+Analyzing loop at utils.c:40
+utils.c:40:9: note: ===== analyze_loop_nest =====
+utils.c:40:9: note: === vect_analyze_loop_form ===
+utils.c:40:9: note: === get_loop_niters ===
+utils.c:40:9: note: Symbolic number of iterations is size_1(D)
+utils.c:40:9: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+utils.c:34:6: note: vectorized 0 loops in function.
+utils.c:34:6: note: ===vect_slp_analyze_bb===
+utils.c:37:33: note: === vect_analyze_data_refs ===
+utils.c:37:33: note: not vectorized: not enough data-refs in basic block.
+utils.c:37:5: note: === vect_analyze_data_refs ===
+utils.c:37:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:39:5: note: === vect_analyze_data_refs ===
+utils.c:39:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:39:5: note: ===vect_slp_analyze_bb===
+utils.c:39:5: note: === vect_analyze_data_refs ===
+utils.c:39:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:39:5: note: ===vect_slp_analyze_bb===
+utils.c:42:17: note: === vect_analyze_data_refs ===
+utils.c:42:17: note: not vectorized: not enough data-refs in basic block.
+utils.c:42:17: note: ===vect_slp_analyze_bb===
+utils.c:40:9: note: === vect_analyze_data_refs ===
+utils.c:40:9: note: got vectype for stmt: *_15[j_37] = _16;
+vector(4) float
+utils.c:40:9: note: got vectype for stmt: *_17[j_37] = 1.0e+0;
+vector(4) float
+utils.c:40:9: note: === vect_analyze_data_ref_accesses ===
+utils.c:40:9: note: not vectorized: no grouped stores in basic block.
+utils.c:40:9: note: ===vect_slp_analyze_bb===
+utils.c:40:9: note: ===vect_slp_analyze_bb===
+utils.c:39:5: note: === vect_analyze_data_refs ===
+utils.c:39:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:39:5: note: ===vect_slp_analyze_bb===
+utils.c:39:5: note: ===vect_slp_analyze_bb===
+utils.c:45:1: note: === vect_analyze_data_refs ===
+utils.c:45:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at utils.c:50
+utils.c:50:5: note: ===== analyze_loop_nest =====
+utils.c:50:5: note: === vect_analyze_loop_form ===
+utils.c:50:5: note: not vectorized: control flow in loop.
+utils.c:50:5: note: bad loop form.
+
+Analyzing loop at utils.c:51
+utils.c:51:9: note: ===== analyze_loop_nest =====
+utils.c:51:9: note: === vect_analyze_loop_form ===
+utils.c:51:9: note: === get_loop_niters ===
+utils.c:51:9: note: Symbolic number of iterations is i_4
+utils.c:51:9: note: === vect_analyze_data_refs ===
+utils.c:51:9: note: got vectype for stmt: swap_16 = *_6[j_20];
+vector(4) float
+utils.c:51:9: note: got vectype for stmt: _10 = *_9[i_4];
+vector(4) float
+utils.c:51:9: note: got vectype for stmt: *_6[j_20] = _10;
+vector(4) float
+utils.c:51:9: note: got vectype for stmt: *_9[i_4] = swap_16;
+vector(4) float
+utils.c:51:9: note: === vect_analyze_scalar_cycles ===
+utils.c:51:9: note: Analyze phi: .MEM_24 = PHI <.MEM_18(7), .MEM_25(5)>
+utils.c:51:9: note: Analyze phi: j_20 = PHI <j_19(7), 0(5)>
+utils.c:51:9: note: Access function of PHI: {0, +, 1}_2
+utils.c:51:9: note: step: 1,  init: 0
+utils.c:51:9: note: Detected induction.
+utils.c:51:9: note: === vect_pattern_recog ===
+utils.c:51:9: note: vect_is_simple_use: operand j_20
+utils.c:51:9: note: def_stmt: j_20 = PHI <j_19(7), 0(5)>
+utils.c:51:9: note: type of def: induction
+utils.c:51:9: note: === vect_analyze_data_ref_accesses ===
+utils.c:51:9: note: === vect_mark_stmts_to_be_vectorized ===
+utils.c:51:9: note: init: phi relevant? .MEM_24 = PHI <.MEM_18(7), .MEM_25(5)>
+utils.c:51:9: note: init: phi relevant? j_20 = PHI <j_19(7), 0(5)>
+utils.c:51:9: note: init: stmt relevant? swap_16 = *_6[j_20];
+utils.c:51:9: note: init: stmt relevant? _8 = j_20 * _27;
+utils.c:51:9: note: init: stmt relevant? _9 = m_15(D) + _8;
+utils.c:51:9: note: init: stmt relevant? _10 = *_9[i_4];
+utils.c:51:9: note: init: stmt relevant? *_6[j_20] = _10;
+utils.c:51:9: note: vec_stmt_relevant_p: stmt has vdefs.
+utils.c:51:9: note: mark relevant 5, live 0: *_6[j_20] = _10;
+utils.c:51:9: note: init: stmt relevant? *_9[i_4] = swap_16;
+utils.c:51:9: note: vec_stmt_relevant_p: stmt has vdefs.
+utils.c:51:9: note: mark relevant 5, live 0: *_9[i_4] = swap_16;
+utils.c:51:9: note: init: stmt relevant? j_19 = j_20 + 1;
+utils.c:51:9: note: init: stmt relevant? if (i_4 > j_19)
+utils.c:51:9: note: worklist: examine stmt: *_9[i_4] = swap_16;
+utils.c:51:9: note: vect_is_simple_use: operand swap_16
+utils.c:51:9: note: def_stmt: swap_16 = *_6[j_20];
+utils.c:51:9: note: type of def: internal
+utils.c:51:9: note: mark relevant 5, live 0: swap_16 = *_6[j_20];
+utils.c:51:9: note: worklist: examine stmt: swap_16 = *_6[j_20];
+utils.c:51:9: note: worklist: examine stmt: *_6[j_20] = _10;
+utils.c:51:9: note: vect_is_simple_use: operand _10
+utils.c:51:9: note: def_stmt: _10 = *_9[i_4];
+utils.c:51:9: note: type of def: internal
+utils.c:51:9: note: mark relevant 5, live 0: _10 = *_9[i_4];
+utils.c:51:9: note: worklist: examine stmt: _10 = *_9[i_4];
+utils.c:51:9: note: === vect_analyze_data_ref_dependences ===
+utils.c:51:9: note: dependence distance  = 0.
+utils.c:51:9: note: dependence distance == 0 between *_6[j_20] and *_6[j_20]
+utils.c:51:9: note: versioning for alias required: can't determine dependence between *_6[j_20] and *_9[i_4]
+utils.c:51:9: note: mark for run-time aliasing test between *_6[j_20] and *_9[i_4]
+utils.c:51:9: note: versioning not yet supported for non-constant step
+utils.c:51:9: note: bad data dependence.
+utils.c:48:6: note: vectorized 0 loops in function.
+utils.c:48:6: note: ===vect_slp_analyze_bb===
+utils.c:50:5: note: === vect_analyze_data_refs ===
+utils.c:50:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:50:5: note: ===vect_slp_analyze_bb===
+utils.c:50:5: note: === vect_analyze_data_refs ===
+utils.c:50:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:50:5: note: ===vect_slp_analyze_bb===
+utils.c:50:5: note: ===vect_slp_analyze_bb===
+utils.c:52:21: note: === vect_analyze_data_refs ===
+utils.c:52:21: note: not vectorized: not enough data-refs in basic block.
+utils.c:52:21: note: ===vect_slp_analyze_bb===
+utils.c:51:9: note: === vect_analyze_data_refs ===
+utils.c:51:9: note: got vectype for stmt: swap_16 = *_6[j_20];
+vector(4) float
+utils.c:51:9: note: got vectype for stmt: _10 = *_9[i_4];
+vector(4) float
+utils.c:51:9: note: got vectype for stmt: *_6[j_20] = _10;
+vector(4) float
+utils.c:51:9: note: got vectype for stmt: *_9[i_4] = swap_16;
+vector(4) float
+utils.c:51:9: note: === vect_analyze_data_ref_accesses ===
+utils.c:51:9: note: not consecutive access _10 = *_9[i_4];
+utils.c:51:9: note: not consecutive access *_9[i_4] = swap_16;
+utils.c:51:9: note: not vectorized: no grouped stores in basic block.
+utils.c:51:9: note: ===vect_slp_analyze_bb===
+utils.c:51:9: note: ===vect_slp_analyze_bb===
+utils.c:50:5: note: === vect_analyze_data_refs ===
+utils.c:50:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:50:5: note: ===vect_slp_analyze_bb===
+utils.c:50:5: note: ===vect_slp_analyze_bb===
+utils.c:51:9: note: === vect_analyze_data_refs ===
+utils.c:51:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:51:9: note: ===vect_slp_analyze_bb===
+utils.c:57:1: note: === vect_analyze_data_refs ===
+utils.c:57:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at utils.c:62
+utils.c:62:18: note: ===== analyze_loop_nest =====
+utils.c:62:18: note: === vect_analyze_loop_form ===
+utils.c:62:18: note: not vectorized: control flow in loop.
+utils.c:62:18: note: bad loop form.
+
+Analyzing loop at utils.c:62
+utils.c:62:21: note: ===== analyze_loop_nest =====
+utils.c:62:21: note: === vect_analyze_loop_form ===
+utils.c:62:21: note: not vectorized: control flow in loop.
+utils.c:62:21: note: bad loop form.
+utils.c:59:6: note: vectorized 0 loops in function.
+utils.c:59:6: note: ===vect_slp_analyze_bb===
+utils.c:60:5: note: === vect_analyze_data_refs ===
+utils.c:60:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:60:5: note: ===vect_slp_analyze_bb===
+utils.c:60:5: note: === vect_analyze_data_refs ===
+utils.c:60:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:60:5: note: ===vect_slp_analyze_bb===
+utils.c:62:32: note: === vect_analyze_data_refs ===
+utils.c:62:32: note: got vectype for stmt: _8 = *_6[0];
+vector(4) float
+utils.c:62:32: note: not vectorized: not enough data-refs in basic block.
+utils.c:62:32: note: ===vect_slp_analyze_bb===
+utils.c:62:16: note: === vect_analyze_data_refs ===
+utils.c:62:16: note: got vectype for stmt: _7 = *_6[j_22];
+vector(4) float
+utils.c:62:16: note: not vectorized: not enough data-refs in basic block.
+utils.c:62:16: note: ===vect_slp_analyze_bb===
+utils.c:63:17: note: === vect_analyze_data_refs ===
+utils.c:63:17: note: got vectype for stmt: stderr.13_9 = stderr;
+vector(2) long unsigned int
+utils.c:63:17: note: not vectorized: not enough data-refs in basic block.
+utils.c:64:17: note: ===vect_slp_analyze_bb===
+utils.c:61:9: note: === vect_analyze_data_refs ===
+utils.c:61:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:61:9: note: ===vect_slp_analyze_bb===
+utils.c:61:9: note: ===vect_slp_analyze_bb===
+utils.c:60:5: note: === vect_analyze_data_refs ===
+utils.c:60:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:60:5: note: ===vect_slp_analyze_bb===
+utils.c:60:5: note: ===vect_slp_analyze_bb===
+utils.c:68:1: note: === vect_analyze_data_refs ===
+utils.c:68:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at utils.c:73
+utils.c:73:31: note: ===== analyze_loop_nest =====
+utils.c:73:31: note: === vect_analyze_loop_form ===
+utils.c:73:31: note: not vectorized: control flow in loop.
+utils.c:73:31: note: bad loop form.
+
+Analyzing loop at utils.c:73
+utils.c:73:17: note: ===== analyze_loop_nest =====
+utils.c:73:17: note: === vect_analyze_loop_form ===
+utils.c:73:17: note: not vectorized: control flow in loop.
+utils.c:73:17: note: bad loop form.
+utils.c:70:6: note: vectorized 0 loops in function.
+utils.c:70:6: note: ===vect_slp_analyze_bb===
+utils.c:71:5: note: === vect_analyze_data_refs ===
+utils.c:71:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:71:5: note: ===vect_slp_analyze_bb===
+utils.c:71:5: note: === vect_analyze_data_refs ===
+utils.c:71:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:71:5: note: ===vect_slp_analyze_bb===
+utils.c:73:31: note: === vect_analyze_data_refs ===
+utils.c:73:31: note: got vectype for stmt: _8 = *m_12(D)[j_2];
+vector(4) float
+utils.c:73:31: note: not vectorized: not enough data-refs in basic block.
+utils.c:73:31: note: ===vect_slp_analyze_bb===
+utils.c:73:15: note: === vect_analyze_data_refs ===
+utils.c:73:15: note: got vectype for stmt: _7 = *_6[j_2];
+vector(4) float
+utils.c:73:15: note: not vectorized: not enough data-refs in basic block.
+utils.c:73:15: note: ===vect_slp_analyze_bb===
+utils.c:74:17: note: === vect_analyze_data_refs ===
+utils.c:74:17: note: got vectype for stmt: stderr.17_9 = stderr;
+vector(2) long unsigned int
+utils.c:74:17: note: not vectorized: not enough data-refs in basic block.
+utils.c:75:17: note: ===vect_slp_analyze_bb===
+utils.c:72:9: note: === vect_analyze_data_refs ===
+utils.c:72:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:72:9: note: ===vect_slp_analyze_bb===
+utils.c:72:9: note: ===vect_slp_analyze_bb===
+utils.c:71:5: note: === vect_analyze_data_refs ===
+utils.c:71:5: note: not vectorized: not enough data-refs in basic block.
+utils.c:71:5: note: ===vect_slp_analyze_bb===
+utils.c:71:5: note: ===vect_slp_analyze_bb===
+utils.c:79:1: note: === vect_analyze_data_refs ===
+utils.c:79:1: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at utils.c:84
+utils.c:84:9: note: ===== analyze_loop_nest =====
+utils.c:84:9: note: === vect_analyze_loop_form ===
+utils.c:84:9: note: === vect_analyze_loop_form ===
+utils.c:84:9: note: === get_loop_niters ===
+utils.c:84:9: note: Considering outer-loop vectorization.
+utils.c:84:9: note: === get_loop_niters ===
+utils.c:84:9: note: Symbolic number of iterations is size_41(D)
+utils.c:84:9: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+
+Analyzing loop at utils.c:85
+utils.c:85:13: note: ===== analyze_loop_nest =====
+utils.c:85:13: note: === vect_analyze_loop_form ===
+utils.c:85:13: note: === get_loop_niters ===
+utils.c:85:13: note: Symbolic number of iterations is size_41(D)
+utils.c:85:13: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+
+Analyzing loop at utils.c:104
+utils.c:104:9: note: ===== analyze_loop_nest =====
+utils.c:104:9: note: === vect_analyze_loop_form ===
+utils.c:104:9: note: === get_loop_niters ===
+utils.c:104:9: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+
+Analyzing loop at utils.c:99
+utils.c:99:9: note: ===== analyze_loop_nest =====
+utils.c:99:9: note: === vect_analyze_loop_form ===
+utils.c:99:9: note: === get_loop_niters ===
+utils.c:99:9: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+
+Analyzing loop at utils.c:92
+utils.c:92:9: note: ===== analyze_loop_nest =====
+utils.c:92:9: note: === vect_analyze_loop_form ===
+utils.c:92:9: note: === vect_analyze_loop_form ===
+utils.c:92:9: note: === get_loop_niters ===
+utils.c:92:9: note: Considering outer-loop vectorization.
+utils.c:92:9: note: === get_loop_niters ===
+utils.c:92:9: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+
+Analyzing loop at utils.c:93
+utils.c:93:13: note: ===== analyze_loop_nest =====
+utils.c:93:13: note: === vect_analyze_loop_form ===
+utils.c:93:13: note: === get_loop_niters ===
+utils.c:93:13: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+utils.c:81:6: note: vectorized 0 loops in function.
+utils.c:81:6: note: ===vect_slp_analyze_bb===
+utils.c:83:8: note: === vect_analyze_data_refs ===
+utils.c:83:8: note: not vectorized: not enough data-refs in basic block.
+utils.c:83:8: note: ===vect_slp_analyze_bb===
+utils.c:83:8: note: === vect_analyze_data_refs ===
+utils.c:83:8: note: not vectorized: not enough data-refs in basic block.
+utils.c:83:8: note: ===vect_slp_analyze_bb===
+utils.c:84:9: note: === vect_analyze_data_refs ===
+utils.c:84:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:84:9: note: ===vect_slp_analyze_bb===
+utils.c:84:9: note: ===vect_slp_analyze_bb===
+utils.c:84:9: note: ===vect_slp_analyze_bb===
+utils.c:86:35: note: === vect_analyze_data_refs ===
+utils.c:86:35: note: not vectorized: not enough data-refs in basic block.
+utils.c:86:35: note: ===vect_slp_analyze_bb===
+utils.c:86:17: note: === vect_analyze_data_refs ===
+utils.c:86:17: note: got vectype for stmt: _7 = *_6[j_82];
+vector(4) float
+utils.c:86:17: note: not vectorized: not enough data-refs in basic block.
+utils.c:85:13: note: === vect_analyze_data_refs ===
+utils.c:85:13: note: not vectorized: not enough data-refs in basic block.
+utils.c:85:13: note: ===vect_slp_analyze_bb===
+utils.c:85:13: note: ===vect_slp_analyze_bb===
+/usr/include/bits/stdio.h:82:10: note: === vect_analyze_data_refs ===
+/usr/include/bits/stdio.h:82:10: note: got vectype for stmt: stdout.21_57 = stdout;
+vector(2) long unsigned int
+/usr/include/bits/stdio.h:82:10: note: not vectorized: not enough data-refs in basic block.
+utils.c:84:9: note: === vect_analyze_data_refs ===
+utils.c:84:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:84:9: note: ===vect_slp_analyze_bb===
+utils.c:84:9: note: ===vect_slp_analyze_bb===
+utils.c:84:9: note: ===vect_slp_analyze_bb===
+utils.c:94:17: note: === vect_analyze_data_refs ===
+utils.c:94:17: note: got vectype for stmt: _12 = *_11[j_83];
+vector(4) float
+utils.c:94:17: note: not vectorized: not enough data-refs in basic block.
+utils.c:93:13: note: === vect_analyze_data_refs ===
+utils.c:93:13: note: not vectorized: not enough data-refs in basic block.
+utils.c:93:13: note: ===vect_slp_analyze_bb===
+utils.c:96:13: note: === vect_analyze_data_refs ===
+utils.c:96:13: note: got vectype for stmt: _18 = *_11[_80];
+vector(4) float
+utils.c:96:13: note: not vectorized: not enough data-refs in basic block.
+utils.c:92:9: note: === vect_analyze_data_refs ===
+utils.c:92:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:92:9: note: ===vect_slp_analyze_bb===
+utils.c:92:9: note: ===vect_slp_analyze_bb===
+utils.c:94:35: note: === vect_analyze_data_refs ===
+utils.c:94:35: note: not vectorized: not enough data-refs in basic block.
+utils.c:94:35: note: ===vect_slp_analyze_bb===
+utils.c:94:35: note: ===vect_slp_analyze_bb===
+utils.c:99:9: note: === vect_analyze_data_refs ===
+utils.c:99:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:99:9: note: ===vect_slp_analyze_bb===
+utils.c:99:9: note: ===vect_slp_analyze_bb===
+/usr/include/bits/stdio.h:82:10: note: === vect_analyze_data_refs ===
+/usr/include/bits/stdio.h:82:10: note: got vectype for stmt: stdout.21_58 = stdout;
+vector(2) long unsigned int
+/usr/include/bits/stdio.h:82:10: note: not vectorized: not enough data-refs in basic block.
+utils.c:105:31: note: === vect_analyze_data_refs ===
+utils.c:105:31: note: not vectorized: not enough data-refs in basic block.
+utils.c:105:31: note: ===vect_slp_analyze_bb===
+utils.c:105:13: note: === vect_analyze_data_refs ===
+utils.c:105:13: note: got vectype for stmt: _23 = *_22[j_85];
+vector(4) float
+utils.c:105:13: note: not vectorized: not enough data-refs in basic block.
+utils.c:104:9: note: === vect_analyze_data_refs ===
+utils.c:104:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:104:9: note: ===vect_slp_analyze_bb===
+utils.c:104:9: note: ===vect_slp_analyze_bb===
+utils.c:107:9: note: === vect_analyze_data_refs ===
+utils.c:107:9: note: got vectype for stmt: _29 = *_22[_80];
+vector(4) float
+utils.c:107:9: note: not vectorized: not enough data-refs in basic block.
+utils.c:107:9: note: ===vect_slp_analyze_bb===
+utils.c:110:1: note: === vect_analyze_data_refs ===
+utils.c:110:1: note: not vectorized: not enough data-refs in basic block.
