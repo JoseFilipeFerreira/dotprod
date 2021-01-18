@@ -62,8 +62,8 @@ __global__
 void dotKernel (float *dev_m1, float *dev_m2, float *dev_output) {
     int ROW = blockIdx.y*blockDim.y+threadIdx.y;
     int COL = blockIdx.x*blockDim.x+threadIdx.x;
-    __shared__ float shareA[NUM_BLOCKS/16][NUM_BLOCKS/16];
-    __shared__ float shareB[NUM_BLOCKS/16][NUM_BLOCKS/16];
+    __shared__ float shareA[16][16];
+    __shared__ float shareB[16][16];
     int bx = blockIdx.x; int by = blockIdx.y;
     int tx = threadIdx.x; int ty = threadIdx.y;
     int row = by * blockDim.y + ty;
