@@ -5,11 +5,12 @@
 
 void clear_cache();
 
-void start_timer (void);
+void start_timer(void);
 
-long long unsigned stop_timer (void);
+long long unsigned stop_timer(void);
 
-void matrices_rand_ones (size_t size, float rands[size][size], float ones[size][size]);
+void matrices_rand_ones(
+    size_t size, float rands[size][size], float ones[size][size]);
 
 void transpose_matrix(size_t size, float m[size][size]);
 

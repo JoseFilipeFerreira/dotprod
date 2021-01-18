@@ -18,8 +18,8 @@ int EVENTS[NUM_EVENTS] = {
 int EVENTSET = PAPI_NULL;
 long long VALUES[NUM_EVENTS];
 
-#define SIZE 4000
-#define MAX_BLOCK_SIDE 80
+#define SIZE 120
+#define MAX_BLOCK_SIDE 12
 float A[SIZE][SIZE];
 float B[SIZE][SIZE];
 float C[SIZE][SIZE];
@@ -227,15 +227,16 @@ int main(void) {
     run_with_PAPI("ijk transposed", dotprod_ijk_transposed);
 
     // IKJ
-    run_with_PAPI("ikj", dotprod_ikj);
+    /* run_with_PAPI("ikj", dotprod_ikj); */
 
     // JKI
     run_with_PAPI("jki", dotprod_jki);
     run_with_PAPI("jki transposed", dotprod_jki_transposed);
 
     // BLOCK
-    run_with_PAPI("ijk block", dotprod_ijk_block);
-    run_with_PAPI("ijk block & vec", dotprod_ijk_block_vec);
-    run_with_PAPI("ijk block & vec & OpenMP", dotprod_ijk_block_vec_openmp);
+    /* run_with_PAPI("ijk block", dotprod_ijk_block); */
+    /* run_with_PAPI("ijk block & vec", dotprod_ijk_block_vec); */
+    /* run_with_PAPI("ijk block & vec & OpenMP", dotprod_ijk_block_vec_openmp);
+     */
     return 0;
 }
