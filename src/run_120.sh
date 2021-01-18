@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#PBS -N dotprod
-#PBS -l walltime=2:00:00
+#PBS -N dotprod_120
+#PBS -l walltime=1:00:00
 #PBS -l nodes=1:r662:ppn=48
 #PBS -q mei
 
@@ -11,5 +11,5 @@ module load gcc/7.2.0
 cd $PBS_O_WORKDIR
 
 for run in {1..8}; do
-    ./dotprod
+    ./dotprod_120
 done

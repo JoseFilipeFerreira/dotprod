@@ -3,6 +3,33 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <sys/time.h>
+
+#define CLEAR_SIZE 90000000
+double CLEAR_CACHE[CLEAR_SIZE];
+
+void clear_cache(){
+    for(size_t i = 0; i < CLEAR_SIZE; i++){
+        CLEAR_CACHE[i] = i;
+    }
+}
+
+#define TIME_RESOLUTION 1000000    // time measuring resolution (us)
+
+long long unsigned start_time;
+struct timeval t;
+
+void start_timer (void) {
+    gettimeofday(&t, NULL);
+    start_time = t.tv_sec * TIME_RESOLUTION + t.tv_usec;
+}
+
+long long unsigned stop_timer (void) {
+    gettimeofday(&t, NULL);
+    long long unsigned final_time = t.tv_sec * TIME_RESOLUTION + t.tv_usec;
+
+    return final_time - start_time;
+}
 
 void matrices_rand_ones (size_t size, float rands[size][size], float ones[size][size]) {
     time_t t;
