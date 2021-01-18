@@ -34,12 +34,77 @@
 </section>
 
 <section>
-<section id="performance-measuring" class="title-slide slide level1">
-<h1>Performance Measuring</h1>
+<section id="development" class="title-slide slide level1">
+<h1>Development</h1>
+<ul>
+<li>code and benchmark matrix multiplication</li>
+<li>A x B = C</li>
+</ul>
+<p><img src="matrix_mult.png" height="200px"/></p>
+</section>
+<section id="matrix-accesses" class="title-slide slide level2">
+<h2>Matrix accesses</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ijk</td>
+<td style="text-align: center;">line</td>
+<td style="text-align: center;">line</td>
+<td style="text-align: center;">column</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ijk trans</td>
+<td style="text-align: center;">line</td>
+<td style="text-align: center;">line</td>
+<td style="text-align: center;">line</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ikj</td>
+<td style="text-align: center;">line</td>
+<td style="text-align: center;">line</td>
+<td style="text-align: center;">line</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">jki</td>
+<td style="text-align: center;">column</td>
+<td style="text-align: center;">column</td>
+<td style="text-align: center;">column</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">jki trans</td>
+<td style="text-align: center;">line</td>
+<td style="text-align: center;">line</td>
+<td style="text-align: center;">line</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="block-optimization" class="title-slide slide level2">
+<h2>Block Optimization</h2>
 
 </section>
-<section id="matrix-size" class="title-slide slide level2">
-<h2>Matrix Size</h2>
+
+<section id="cuda" class="title-slide slide level2">
+<h2>Cuda</h2>
+
+</section>
+</section>
+<section>
+<section id="performance-measurement" class="title-slide slide level1">
+<h1>Performance Measurement</h1>
+
+</section>
+<section id="data-size" class="title-slide slide level2">
+<h2>Data Size</h2>
 <table>
 <thead>
 <tr class="header">
@@ -77,8 +142,8 @@
 <p>Formula: N²*3*4 = size</p>
 </section>
 
-<section id="execution-time---cpu" class="title-slide slide level2">
-<h2>execution time - CPU</h2>
+<section id="execution-time---sequential" class="title-slide slide level2">
+<h2>execution time - sequential</h2>
 <table>
 <thead>
 <tr class="header">
@@ -129,8 +194,8 @@
 </table>
 <p>time in μs</p>
 </section>
-<section id="ram-accessses" class="slide level3">
-<h3>RAM accessses</h3>
+<section id="ram-accesses" class="slide level3">
+<h3>RAM accesses</h3>
 <table>
 <thead>
 <tr class="header">
@@ -144,10 +209,10 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">ijk</td>
-<td style="text-align: center;">7/529759</td>
-<td style="text-align: center;">8/13962496</td>
-<td style="text-align: center;">157510/27021113743</td>
-<td style="text-align: center;">3999942878/512150216402</td>
+<td style="text-align: center;">.001321</td>
+<td style="text-align: center;">.000057</td>
+<td style="text-align: center;">.000582</td>
+<td style="text-align: center;">.781009</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ijk trans</td>
@@ -158,32 +223,32 @@
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ikj</td>
-<td style="text-align: center;">125/460398</td>
-<td style="text-align: center;">885/12203520</td>
-<td style="text-align: center;">61438/23641610705</td>
-<td style="text-align: center;">138308042/448118098445</td>
+<td style="text-align: center;">.027150</td>
+<td style="text-align: center;">.007252</td>
+<td style="text-align: center;">.000259</td>
+<td style="text-align: center;">.030864</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">jki</td>
-<td style="text-align: center;">192/525999</td>
-<td style="text-align: center;">1172/13945920</td>
-<td style="text-align: center;">424240/27018866530</td>
-<td style="text-align: center;">4024883519/512134361578</td>
+<td style="text-align: center;">.036501</td>
+<td style="text-align: center;">.008403</td>
+<td style="text-align: center;">.001570</td>
+<td style="text-align: center;">.785903</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">jki trans</td>
-<td style="text-align: center;">164/480100</td>
-<td style="text-align: center;">1059/12377782</td>
-<td style="text-align: center;">213621/23668627809</td>
-<td style="text-align: center;">241300131/448310130045</td>
+<td style="text-align: center;">.034159</td>
+<td style="text-align: center;">.008555</td>
+<td style="text-align: center;">.000902</td>
+<td style="text-align: center;">.053824</td>
 </tr>
 </tbody>
 </table>
-<p>Formula: L3 misses / Total instructions</p>
+<p>Formula: 100*L3 misses / Total instructions</p>
 </section>
 
-<section id="execution-time---cpu-1" class="title-slide slide level2">
-<h2>execution time - CPU</h2>
+<section id="execution-time---block" class="title-slide slide level2">
+<h2>execution time - Block</h2>
 <table>
 <thead>
 <tr class="header">
@@ -299,7 +364,7 @@
 </tr>
 </tbody>
 </table>
-<p>Formula: 100*L1 misses / Total accessses</p>
+<p>Formula: 100*L1 misses / Total accesses</p>
 </section>
 
 <section id="global-miss-rate-l2" class="title-slide slide level2">
@@ -345,7 +410,7 @@
 </tr>
 </tbody>
 </table>
-<p>Formula: 100*L2 misses / Total accessses</p>
+<p>Formula: 100*L2 misses / Total accesses</p>
 </section>
 
 <section id="global-miss-rate-l3" class="title-slide slide level2">
@@ -391,7 +456,7 @@
 </tr>
 </tbody>
 </table>
-<p>Formula: 100*L3 misses / Total accessses</p>
+<p>Formula: 100*L3 misses / Total accesses</p>
 </section>
 </section>
     </div>
