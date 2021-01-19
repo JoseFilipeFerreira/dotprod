@@ -9,16 +9,16 @@
 
 #define NUM_EVENTS 4
 int EVENTS[NUM_EVENTS] = {
-    PAPI_L1_TCM,
     PAPI_L2_TCM,
     PAPI_L3_TCM,
-    PAPI_TOT_INS,
+    PAPI_LD_INS,
+    PAPI_SR_INS
 };
 
 int EVENTSET = PAPI_NULL;
 long long VALUES[NUM_EVENTS];
 
-#define SIZE 120
+#define SIZE 4000
 #define MAX_BLOCK_SIDE 12
 float A[SIZE][SIZE];
 float B[SIZE][SIZE];
@@ -80,6 +80,7 @@ void dotprod_jki(
         }
     }
 }
+
 void dotprod_jki_transposed(
     size_t size, float a[][size], float b[][size], float c[][size]) {
     memset(c, 0, size * size * sizeof(float));
