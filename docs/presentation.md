@@ -72,9 +72,10 @@ Formula: 100\*L3 misses / Total instructions
 time in μs
 
 ## execution time - GPU
-| type | L2 data (120) | RAM (512) |
-|:-----|:-------------:|:---------:|
-| CUDA | 704           |           |
+| type      | Total | Computation | H to D | D to H |
+|:----------|:-----:|:-----------:|:------:|:------:|
+| CUDA(120) | 640   | 195         | 33     | 9      |
+| CUDA(512) | 4206  | 1390        | 524    | 154    |
 time in μs
 
 * L2 cache is 1.2MiB on kepler k20
