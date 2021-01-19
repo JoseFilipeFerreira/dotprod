@@ -99,7 +99,7 @@
 
 <section id="cuda" class="title-slide slide level2">
 <h2>Cuda</h2>
-
+<p><img src="cuda.gif" height="300px"/></p>
 </section>
 </section>
 <section>
@@ -299,23 +299,22 @@
 <thead>
 <tr class="header">
 <th style="text-align: left;">type</th>
-<th style="text-align: center;">L1 data</th>
-<th style="text-align: center;">L2 data</th>
-<th style="text-align: center;">L3 data</th>
-<th style="text-align: center;">RAM</th>
+<th style="text-align: center;">L2 data (120)</th>
+<th style="text-align: center;">RAM (512)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">CUDA</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
+<td style="text-align: center;">704</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
 <p>time in μs</p>
+<ul>
+<li>L2 cache is 1.2MiB on kepler k20</li>
+</ul>
 </section>
 </section>
 <section>
@@ -460,10 +459,6 @@
 </table>
 <p>Formula: 100*L3 misses / (Load Ins + Store Ins)</p>
 </section>
-</section>
-<section id="roofline-graph" class="title-slide slide level1">
-<h1>roofline graph</h1>
-
 </section>
     </div>
   </div>

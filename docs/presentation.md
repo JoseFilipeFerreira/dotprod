@@ -26,6 +26,7 @@
 
 
 ## Cuda
+<img src="cuda.gif" height="300px"/>
 
 # Performance Measurement
 * PAPI
@@ -71,11 +72,12 @@ Formula: 100\*L3 misses / Total instructions
 time in μs
 
 ## execution time - GPU
-| type | L1 data | L2 data | L3 data | RAM |
-|:-----|:-------:|:-------:|:-------:|:---:|
-| CUDA | -       | -       | -       |     |
-
+| type | L2 data (120) | RAM (512) |
+|:-----|:-------------:|:---------:|
+| CUDA | 704           |           |
 time in μs
+
+* L2 cache is 1.2MiB on kepler k20
 
 # global% miss rate
 
@@ -111,5 +113,3 @@ Formula: 100\*L2 misses / (Load Ins + Store Ins)
 | jki trans | .3270   | .0831   | .0087   | 2.9880 |
 
 Formula: 100\*L3 misses / (Load Ins + Store Ins)
-
-# roofline graph
