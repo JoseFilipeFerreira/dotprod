@@ -26,7 +26,7 @@
 
 
 ## Cuda
-<img src="cuda.gif" height="300px"/>
+<img src="cuda.gif" height="600px"/>
 
 # Performance Measurement
 * PAPI
