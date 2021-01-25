@@ -142,6 +142,18 @@ in order to compute another section of a line from C.
         \caption{Dotprod with Block Optimization}
 \end{figure}
 
+After creating a working dotprod implementation with block optimization we
+decided to apply the vectozition flags to the compilation and analize the
+compiler output in order to check if the code was vectorizable. Due to a Read
+after write data dependency minor tweaks had to be applied to the code in order
+for it to vectorize successfully.
+
+Finally this version of the dotprod with block optimization and vectorization
+was modified to run efficiently on all cores of a multicore device making use of
+the OpenMP.
+
+
+
 \chapter{Dotprod Benchmarking}
 In order to properly benchmark the different algorithms created and compare them
 we choose to collect data with PAPI and \textit{sys/time.h}. The full list of
@@ -152,7 +164,7 @@ EVENT PAPI\_TOT\_INS. With this set of counters we can validate the theory that
 different algorithms have different cache misses and memory access.
 
 To also benchmark the impact of different sizes of matrices we choose four
-diferent sizes. The smaller one fits in L1 cache, then L2 cache, then L3 cache
+different sizes. The smaller one fits in L1 cache, then L2 cache, then L3 cache
 and finally the biggest on requires significant access to RAM. Based on the CPU
 used for benchmarking the following table was created:
 
@@ -169,13 +181,12 @@ used size  & 40      & 120     & 1500     & 4000                   \\ \hline
 \end{table}
 
 For the tests, the matrix A was filled with random numbers and the matrix B was
-filled with ones. This way, AxB results in a matrix where all colums have the
+filled with ones. This way, AxB results in a matrix where all column have the
 same value and BxA results in a matrix where all lines have the same value. This
-property was used to assert if all the variations of the algoritm were producing
+property was used to assert if all the variations of the algorithm were producing
 the correct results. After each test the cache was cleared to ensure all the
 tests used a cold cache. To reduce the outliers, the time measurements were
-performed 8 times using a K-best scheme with K=3 and a tolerance of 5\%
-
+performed 8 times using a K-best scheme with K=3 and a tolerance of 5\%.
 
 \begin{table}[H]
 \centering
@@ -186,7 +197,8 @@ i-j-k       & 66    & 1733    & 4239493   & 177553349 \\ \hline
 i-j-k trans & 94    & 1698    & 3223331   & 71675215  \\ \hline
 i-k-j       & 71    & 1718    & 3194044   & 61695968  \\ \hline
 j-k-i       & 72    & 1744    & 8596300   & 324751067 \\ \hline
-j-k-i trans & 69    & 1375    & 2273077   & 45375529  \\ \hline
+\textit{j-k-i trans} & \textit{69}    & \textit{1375}    & \textit{2273077}   &
+\textit{45375529}  \\ \hline
 \end{tabular}
 \caption{Execution time for non-blocking sequential algorithms (time in $\mu$s)}
 \end{table}
@@ -200,7 +212,8 @@ i-j-k       & .001321 & .000057 & .000582   & .781009   \\ \hline
 i-j-k trans & .001911 & .000105 & .000308   & .084568   \\ \hline
 i-k-j       & .027150 & .007252 & .000259   & .030864   \\ \hline
 j-k-i       & .036501 & .008403 & .001570   & .785903   \\ \hline
-j-k-i trans & .034159 & .008555 & .000902   & .053824   \\ \hline
+\textit{j-k-i trans} & \textit{.034159} & \textit{.008555} & \textit{.000902}
+                     & \textit{.053824}   \\ \hline
 \end{tabular}
 \caption{Ram access per total instructions (\%)}
 \end{table}
@@ -219,18 +232,51 @@ j-k-i trans & .034159 & .008555 & .000902   & .053824   \\ \hline
 \multirow{3}{*}{j-k-i}       & L1 & .1411 & 1.9620  & 50.0075   & 50.1961   \\ \cline{2-6}
                              & L2 & .0873 & .0273   & 9.6299    & 50.1126   \\ \cline{2-6}
                              & L3 & .0709 & .0173   & .0031     & 1.5741    \\ \hline
-\multirow{3}{*}{j-k-i trans} & L1 & .6037 & 7.9182  & 8.4272    & 8.5532    \\ \cline{2-6}
-                             & L2 & .3874 & .1204   & .2507     & 6.4841    \\ \cline{2-6}
-                             & L3 & .3270 & .0831   & .0087     & 2.9880    \\ \hline
+\multirow{3}{*}{\textit{j-k-i trans}} & \textit{L1} & \textit{.6037} & \textit{7.9182}  & \textit{8.4272}    & \textit{8.5532}    \\ \cline{2-6}
+                                      & \textit{L2} & \textit{.3874} & \textit{.1204}   & \textit{.2507}     & \textit{6.4841}    \\ \cline{2-6}
+                                      & \textit{L3} & \textit{.3270} & \textit{.0831}   & \textit{.0087}     & \textit{2.9880}    \\ \hline
 \end{tabular}
 \caption{global miss rate for algoritms that benefited from transposing}
 \end{table}
 
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+          & i-j-k trans & i-j-k trans + block & speedup \\ \hline
+4000x4000 & 71675215    & 64385275            & 1.1132  \\ \hline
+\end{tabular}
+\caption{time comparison of block optimisation (time in $\mu$)}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+        & i-j-k trans & i-j-k trans + block + vec & speedup \\ \hline
+40x40   & 94          & 71                        & 1.3239  \\ \hline
+120x120 & 1698        & 1523                      & 1.1149  \\ \hline
+\end{tabular}
+\caption{time comparison of block optimization with vectorization (time in
+$\mu$)}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+          & i-j-k trans & i-j-k trans + block + vec + OpenMP & speedup \\ \hline
+4000x4000 & 71675215    & 2407551                            & 29.7710 \\ \hline
+\end{tabular}
+\caption{time comparison of block optimization with vectorization and OpenMP (time in
+$\mu$)}
+\end{table}
 
 \chapter{Conclusions}
 
 \appendix
 
 \chapter{Available papi counters}\label{A:papi_avail}
+\verbatiminput{papi_avail_-a.txt}
 
 \end{document}
