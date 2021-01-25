@@ -177,7 +177,7 @@ tests used a cold cache. To reduce the outliers, the time measurements were
 performed 8 times using a K-best scheme with K=3 and a tolerance of 5\%
 
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|l|}
 \hline
@@ -189,6 +189,20 @@ j-k-i       & 72    & 1744    & 8596300   & 324751067 \\ \hline
 j-k-i trans & 69    & 1375    & 2273077   & 45375529  \\ \hline
 \end{tabular}
 \caption{Execution time for non-blocking sequential algorithms (time in $\mu$s)}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+            & 40x40   & 120x120 & 1500x1500 & 4000x4000 \\ \hline
+i-j-k       & .001321 & .000057 & .000582   & .781009   \\ \hline
+i-j-k trans & .001911 & .000105 & .000308   & .084568   \\ \hline
+i-k-j       & .027150 & .007252 & .000259   & .030864   \\ \hline
+j-k-i       & .036501 & .008403 & .001570   & .785903   \\ \hline
+j-k-i trans & .034159 & .008555 & .000902   & .053824   \\ \hline
+\end{tabular}
+\caption{Ram access per total instructions (\%)}
 \end{table}
 
 \begin{table}[H]
