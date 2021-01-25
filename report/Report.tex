@@ -99,9 +99,22 @@ the cache size.
 
 As it is visible in the picture above the CPU has 32KiB of L1 cache per core,
 256KiB of L2 cache per core and 3072MiB L3 cache. It also has 7814MiB of Random
-Access Memory(RAM).
+Access Memory(RAM) with minimum latency of 13.750 nano seconds acording to
+vendor specs.
 
-TODO: task1
+The computer used for obtaining the results during this paper was the node 662
+of the search cluster at Universidade do
+Minho\footnote[1]{\url{http://http://search6.di.uminho.pt}}. It is equipped with
+a
+dual Intel Xeon E5-2695v2 processor
+with 24 cores and Nvidia Kepler K20m accelerators. This CPUs have 32 KiB of L1
+cache for each core, 256KiB of L2 cache, 30MiB of L3 cache and 64GiB of RAM.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=\textwidth]{images/roofline_cluster.png}
+        \caption{roofline on the 662 node}
+\end{figure}
 
 \chapter{Dotprod Implementation}
 The dotprod is a mathematical operation between two matrices (A and B) that
