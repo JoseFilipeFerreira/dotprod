@@ -163,7 +163,7 @@ This results in the following patterns of access depending on the algorithm:
 \textbf{j-k-i}       & collumn & collumn & collumn \\ \hline
 \textbf{j-k-i trans} & line    & line    & line    \\ \hline
 \end{tabular}
-\caption{matrices access based on loop order}
+\caption{Matrices access based on loop order}
 \end{table}
 
 In order to explore even more cache locality another version of the algorithm
@@ -289,7 +289,7 @@ j-k-i       & .036501 & .008403 & .001570   & .785903   \\ \hline
 \textit{j-k-i trans} & \textit{.034159} & \textit{.008555} & \textit{.000902}
                      & \textit{.053824}   \\ \hline
 \end{tabular}
-\caption{Ram access per total instructions (\%)}
+\caption{RAM access per total instructions (\%)}
 \end{table}
 
 
@@ -311,7 +311,7 @@ j-k-i       & .036501 & .008403 & .001570   & .785903   \\ \hline
                                       & \textit{L2} & \textit{.3874} & \textit{.1204}   & \textit{.2507}     & \textit{6.4841}    \\ \cline{2-6}
                                       & \textit{L3} & \textit{.3270} & \textit{.0831}   & \textit{.0087}     & \textit{2.9880}    \\ \hline
 \end{tabular}
-\caption{global miss rate for algoritms that benefited from transposing}
+\caption{Global miss rate for algoritms that benefited from transposing}
 \end{table}
 
 Analysing this table we can confirm the theory that transposing the matrix
@@ -332,7 +332,7 @@ increases the global miss rate.
           & i-j-k trans & i-j-k trans + block & speedup \\ \hline
 4000x4000 & 71675215    & 64385275            & 1.1132  \\ \hline
 \end{tabular}
-\caption{time comparison of block optimisation (time in $\mu$)}
+\caption{Time comparison of block optimisation (time in $\mu$)}
 \end{table}
 
 \begin{table}[H]
@@ -343,7 +343,7 @@ increases the global miss rate.
 40x40   & 94          & 71                        & 1.3239  \\ \hline
 120x120 & 1698        & 1523                      & 1.1149  \\ \hline
 \end{tabular}
-\caption{time comparison of block optimization with vectorization (time in
+\caption{Time comparison of block optimization with vectorization (time in
 $\mu$)}
 \end{table}
 
@@ -354,7 +354,7 @@ $\mu$)}
           & i-j-k trans & i-j-k trans + block + vec + OpenMP & speedup \\ \hline
 4000x4000 & 71675215    & 2407551                            & 29.7710 \\ \hline
 \end{tabular}
-\caption{time comparison of block optimization with vectorization and OpenMP (time in
+\caption{Time comparison of block optimization with vectorization and OpenMP (time in
 $\mu$)}
 \end{table}
 
@@ -371,7 +371,7 @@ parallelism with OpenMP to the vectorized code yielded a speedup of 29.7710.
 120x120 & 195         & 33             & 9              & 640   \\ \hline
 512x512 & 1390        & 524            & 154            & 4206  \\ \hline
 \end{tabular}
-\caption{analysis of CUDA times (time in $\mu$s)}
+\caption{Analysis of CUDA times (time in $\mu$s)}
 \end{table}
 
 \begin{table}[H]
@@ -383,12 +383,18 @@ CUDA                      & 640     & 1.0000  \\ \hline
 i-j-k trans + block + vec & 1523    & 2.3796  \\ \hline
 i-j-k trans               & 1698    & 2.6531  \\ \hline
 \end{tabular}
-\caption{time comparison of CUDA (time in $\mu$s)}
+\caption{Time comparison of CUDA (time in $\mu$s)}
 \end{table}
 
 
 \chapter{Conclusions}
 
+After the analysis of the results collected during the elaboration of this
+report, we can conclude that memory access optimizations can greaty 
+impact an algoritm performance, reducing cache misses, therefore, reducing the
+data wait time of the processor.
+We can also conclude that GPU proccessing can be a lot faster to process
+matrices than a CPU, due to its architecture.
 
 \appendix
 
