@@ -84,7 +84,7 @@ the maximum performance of the CPU with the maximum performance of the GPU, a
 parallelized version of the algorithm will be developed with OpenMP and a GPU
 version will be developed making use of the CUDA API.
 
-\chapter{Full characterization of the hardware}
+\chapter{Characterization of the hardware}
 Our team's main laptop is a Lenovo ThinkPad X260. It is powered by a i5-6300U, a
 dual-core hyperthreaded skylake cpu.
 
@@ -109,12 +109,6 @@ a
 dual Intel Xeon E5-2695v2 processor
 with 24 cores and Nvidia Kepler K20m accelerators. This CPUs have 32 KiB of L1
 cache for each core, 256KiB of L2 cache, 30MiB of L3 cache and 64GiB of RAM.
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=\textwidth]{images/roofline_cluster.png}
-        \caption{roofline on the 662 node}
-\end{figure}
 
 \chapter{Dotprod Implementation}
 The dotprod is a mathematical operation between two matrices (A and B) that
@@ -397,6 +391,13 @@ We can also conclude that GPU processing can be a lot faster to process
 matrices than a CPU, due to its inherently parallel architecture.
 
 \appendix
+
+\chapter{Roofline of the 662 node}
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=\textwidth]{images/roofline_cluster.png}
+        \caption{roofline on the 662 node}
+\end{figure}
 
 \chapter{Available papi counters}\label{A:papi_avail}
 \verbatiminput{papi_avail_-a.txt}
