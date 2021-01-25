@@ -54,7 +54,10 @@ linkcolor=black}
 
 \begin{abstract}
     \begin{center}
-        TODO: abstract
+        This paper documents the development and benchmarking of different
+        dotprod algorithms with the aim of analyzing, among others, the impact
+        of matrix transposing, vectorization, paralllization and CUDA on the
+        computation time
     \end{center}
 \end{abstract}
 
@@ -65,7 +68,21 @@ linkcolor=black}
 \listoffigures
 
 \chapter{Introduction}
-TODO: introducao
+In the last decades the hardware market has seen a shift towards the mass
+availability of multicore CPUs and the constant increase of the computing power
+of the GPUs. Due to this increased availability there is a growing need for
+performance engineers and programmers capable of exploring this constantly
+expanding field.
+
+In this paper we will document the development and benchmarking of different
+dotprod algorithms in order to study the impact of several alterations on the
+basic dotprod implementation.
+
+Firstly we will compare different sequential versions of the algorithm. Then we
+will introduce blocking to the algorithm and vectorize it. Finally, to compare
+the maximum performance of the CPU with the maximum performance of the GPU, a
+parallelized version of the algorithm will be developed with OpenMP and a GPU
+version will be developed making use of the CUDA API.
 
 \chapter{Full characterization of the hardware}
 Our team's main laptop is a Lenovo ThinkPad X260. It is powered by a i5-6300U, a
@@ -164,7 +181,19 @@ Finally this version of the dotprod with block optimization and vectorization
 was modified to run efficiently on all cores of a multicore device making use of
 OpenMP.
 
-TODO: explain CUDA implementation
+Due to the fact that the GPU is design to perform operations over matrices it
+would be relevant to compare the performance of the optimized dotprod with the
+performance of a algorithm designed to use all the SMX of a Kepler architecture.
+This algorithm uses matrix blocking and GPU shared memory in order to maximize
+the performance of the computation.
+
+In this algorithm each thread calculates a position of the C matrix. Since the
+shared memory is shared within a given block and contains all the values needed
+to calculate a temporary block that will be added to the final block on the
+matrix C, all the threads on that given block can calculate their value
+accessing only the shared memory. This way the threads spend less time on the
+scoreboard waiting for the memory. Due to the parallel nature of the GPU all the
+blocks are being computed at the same time.
 
 \chapter{Dotprod Benchmarking}
 In order to properly benchmark the different algorithms created and compare them
@@ -184,17 +213,18 @@ different matrix sizes. The smaller one fits in the L1 cache; the second
 smallest fits in the L2 cache; the second largest fits in the L3 cache and
 finally the biggest one requires significant access to RAM. Based on the CPU
 used for benchmarking the following table was created were the formula to
-calculate the max size is: \[N²*3*sizeof(float) = cache\_size\]
+calculate the max size is: \[N^2*3*sizeof(float) = cache\_size\]
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-           & L1 data & L2 data & L3 data  & RAM                    \\ \hline
-cache size & 32768   & 262144  & 31457280 & \textgreater{}31457280 \\ \hline
-max size   & 52      & 147     & 1619     & \textgreater{}1619     \\ \hline
-used size  & 40      & 120     & 1500     & 4000                   \\ \hline
-estimated FP op's & 128000  & 3456000 & 6750000000 & 1.28*10¹¹     \\ \hline
+           & L1 data & L2 data & L3 data  & RAM                        \\ \hline
+cache size & 32768B   & 262144B  & 31457280B & \textgreater{}31457280B \\ \hline
+max size   & 52      & 147     & 1619     & \textgreater{}1619         \\ \hline
+used size  & 40      & 120     & 1500     & 4000                       \\ \hline
+estimated FP op's & 128000  & 3456000 & 6750000000 & 1.28*10¹¹         \\ \hline
+estimated RAM transfers & 19200B  & 172800B & 27000000B & 192000000B   \\ \hline
 \end{tabular}
 \caption{Matrix sizes used for benchmarking}
 \end{table}
@@ -315,6 +345,11 @@ $\mu$)}
 $\mu$)}
 \end{table}
 
+The blocking of the algorithm gratly reduces the time of the algorithm. Simply
+adding blocking we achieved a speedup of 1.1132. Adding vectorization we were
+able to achieve a speedup of 1.3239 for the smallest matrix. Finnaly, adding
+parallelism with OpenMP to the vectorized code yielded a speedup of 29.7710.
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|l|}
@@ -323,7 +358,7 @@ $\mu$)}
 120x120 & 195         & 33             & 9              & 640   \\ \hline
 512x512 & 1390        & 524            & 154            & 4206  \\ \hline
 \end{tabular}
-\caption{analysis of CUDA times (time in $\mu$s}
+\caption{analysis of CUDA times (time in $\mu$s)}
 \end{table}
 
 \begin{table}[H]
@@ -335,11 +370,12 @@ CUDA                      & 640     & 1.0000  \\ \hline
 i-j-k trans + block + vec & 1523    & 2.3796  \\ \hline
 i-j-k trans               & 1698    & 2.6531  \\ \hline
 \end{tabular}
-\caption{time comparison of CUDA (time in $\mu$s}
+\caption{time comparison of CUDA (time in $\mu$s)}
 \end{table}
 
 
 \chapter{Conclusions}
+
 
 \appendix
 
